@@ -359,6 +359,14 @@ input[type="range"]:focus-visible { outline-offset: 2px; }
 /* ---------- Closing and footer ---------- */
 
 .closing { padding: 120px 0 96px; border-top: 1px solid var(--rule); scroll-margin-top: 60px; }
+/* The casual portrait closes the page, a bookend to the one beside the name: above the label on phones,
+   beside the text from 760px. Straight, since the label above it is the tilted element. */
+.closing__inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 48px; }
+.closing__portrait { grid-row: 1; justify-self: start; width: 88px; margin-bottom: 36px; }
+@media (min-width: 760px) {
+  .closing__inner { grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
+  .closing__portrait { grid-column: 2; width: clamp(104px, 11vw, 132px); margin-bottom: 8px; }
+}
 .closing__where { margin-top: 18px; }
 .closing__text { margin-top: 32px; max-width: 30ch; font-size: clamp(1.5rem, 3.2vw, 2.4rem); line-height: 1.25; letter-spacing: -.01em; color: var(--ink); }
 
