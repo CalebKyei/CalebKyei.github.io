@@ -117,14 +117,6 @@
         <li><strong>Hand-off.</strong> A 0.965 derating on K<sub>opt</sub> made the turbine reliably reach rated speed for the hand-over to the pitch controller.</li>
     </ul>
   </section>
-  <figure class="plate plate--narrow">
-    <div class="plate__frame"><img src="../assets/img/dfig-envelope.webp" width="1100" height="1103" alt="Three plots over 100 seconds: wind speed rising past the cut-out line and falling below the restart line, generator speed, and the supervisory state." loading="lazy" decoding="async"></div>
-    <figcaption><b>Fig. 2</b>Full-envelope test: the wind rises past the 25&nbsp;m/s cut-out and falls back (top), with the generator speed (middle) and the active state (bottom). The turbine stays in cut-out until the wind is below 19&nbsp;m/s and the rotor has slowed.</figcaption>
-  </figure>
-  <figure class="plate plate--narrow">
-    <div class="plate__frame"><img src="../assets/img/dfig-pitch.webp" width="1369" height="911" alt="Three plots over 40 seconds: wind ramping from 10 to 15 metres per second past the 13 metre per second rated wind, generator speed rising to 1800 rpm and power settling at rated, and the pitch angle engaging at about 30 seconds." loading="lazy" decoding="async"></div>
-    <figcaption><b>Fig. 3</b>Rated-power regulation: as the wind ramps from 10 to 15&nbsp;m/s the generator reaches rated speed and the pitch controller engages, holding 1800&nbsp;rpm and 2&nbsp;MW (generator sign convention).</figcaption>
-  </figure>
   <section class="block split" aria-labelledby="lessons4-h">
     <div class="split__head"><h2 class="block__title" id="lessons4-h">What I <b>took</b> from it</h2></div>
     <ol class="lessons">
@@ -140,7 +132,7 @@
 
 <nav class="sits" aria-labelledby="sits-h">
   <p class="label sits__head" id="sits-h">Where this sits · <strong>DFIG supervisory control</strong></p>
-<svg class="grid" viewBox="0 0 440 300" role="group" aria-label="Where this project sits in a small grid. The other blocks link to their projects.">
+<svg class="grid" viewBox="6 0 428 288" role="group" aria-label="Where this project sits in a small grid. The other blocks link to their projects.">
 <path class="wire" d="M45 150H96M150 42v22M150 94v56M250 104v46M122 150v34M300 150v26M300 198v24M390 150v54"/>
 <path class="bus" d="M96 150H428"/>
 <circle class="comp" cx="28" cy="150" r="17"/>
@@ -155,14 +147,14 @@
 <rect class="comp" x="128" y="14" width="44" height="28" rx="2"/>
 <path class="glyph" d="M142.7 14v28M157.3 14v28M128 28h44"/>
 <text class="lbl" x="122" y="32" text-anchor="end">PV</text>
-<text class="tip" x="220" y="292" text-anchor="middle">Day-ahead solar forecasting →</text>
+<text class="tip" x="220" y="281" text-anchor="middle">Day-ahead solar forecasting →</text>
 </a>
 <a href="grid-converter.html" aria-label="Grid-connected converter: converter control project">
 <rect class="hit" x="96" y="58" width="76" height="42"/>
 <rect class="comp" x="134" y="64" width="32" height="30" rx="2"/>
 <path class="glyph" d="M134 94 166 64M138.5 70.5h8M138.5 74.5h8M152 87q2.5-4 5 0t5 0"/>
 <text class="lbl" x="128" y="83" text-anchor="end">VSC</text>
-<text class="tip" x="220" y="292" text-anchor="middle">Grid-connected converter control →</text>
+<text class="tip" x="220" y="281" text-anchor="middle">Grid-connected converter control →</text>
 </a>
 <a href="dfig-supervisory.html" aria-label="Wind turbine: supervisory control project" class="is-current" aria-current="page">
 <rect class="hit" x="218" y="2" width="78" height="106"/>
@@ -170,27 +162,27 @@
 <g id="rotor"><path class="blade" d="M250 34c-3-9-2.5-19 0-27 2.5 8 3 18 0 27z"/><path class="blade" d="M250 34c-3-9-2.5-19 0-27 2.5 8 3 18 0 27z" transform="rotate(120 250 34)"/><path class="blade" d="M250 34c-3-9-2.5-19 0-27 2.5 8 3 18 0 27z" transform="rotate(240 250 34)"/></g>
 <circle class="comp" cx="250" cy="34" r="3.5"/>
 <text class="lbl" x="262" y="100">Wind</text>
-<text class="tip" x="220" y="292" text-anchor="middle">DFIG wind turbine: supervisory control →</text>
+<text class="tip" x="220" y="281" text-anchor="middle">DFIG wind turbine: supervisory control →</text>
 </a>
 <a href="active-filter-lab.html" aria-label="Active filter: active harmonic filter lab">
 <rect class="hit" x="56" y="176" width="88" height="42"/>
 <rect class="comp" x="106" y="184" width="32" height="26" rx="2"/>
 <path class="glyph" d="M111 197q2.75-6 5.5 0t5.5 0t5.5 0t5.5 0"/>
 <text class="lbl" x="100" y="201" text-anchor="end">Filter</text>
-<text class="tip" x="220" y="292" text-anchor="middle">Active harmonic filter lab →</text>
+<text class="tip" x="220" y="281" text-anchor="middle">Active harmonic filter lab →</text>
 </a>
 <a href="pid-design-tool.html" aria-label="Power supply with PFC: digital PID design tool">
 <rect class="hit" x="276" y="170" width="76" height="34"/>
 <rect class="comp" x="282" y="176" width="36" height="22" rx="2"/>
 <text class="lbl in-box" x="300" y="191" text-anchor="middle">PFC</text>
-<text class="tip" x="220" y="292" text-anchor="middle">Digital PID design tool for PFC →</text>
+<text class="tip" x="220" y="281" text-anchor="middle">Digital PID design tool for PFC →</text>
 </a>
 <a href="ev-mpc.html" aria-label="Electric vehicle: MPC speed controller project">
 <rect class="hit" x="358" y="196" width="66" height="54"/>
 <path class="comp" d="M368 220v-7l7-9h28l7 9h2v7z"/>
 <circle class="comp" cx="378" cy="220" r="4"/><circle class="comp" cx="402" cy="220" r="4"/>
 <text class="lbl" x="390" y="242" text-anchor="middle">EV · MPC</text>
-<text class="tip" x="220" y="292" text-anchor="middle">EV powertrain: MPC speed controller →</text>
+<text class="tip" x="220" y="281" text-anchor="middle">EV powertrain: MPC speed controller →</text>
 </a>
 </svg>
 </nav>
@@ -212,7 +204,7 @@
         <li><a href="../assets/caleb-kyei-cv.pdf" type="application/pdf">CV (PDF)</a></li>
       </ul>
     </div>
-    <div><h2>Based in</h2><ul><li>Barcelona</li></ul></div>
+    <div><h2>Based in</h2><ul><li>Eindhoven</li><li>Studying in Barcelona</li></ul></div>
     <div><h2>Availability</h2><ul><li>Master's thesis, 1 Feb – 31 Jul 2027</li></ul></div>
   </div>
   <div class="wrap site-footer__bar">

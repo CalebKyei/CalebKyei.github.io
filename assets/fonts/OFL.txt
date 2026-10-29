@@ -1,10 +1,13 @@
-This site ships two font families, both under the SIL Open Font License, Version 1.1:
+This site ships three font families, all under the SIL Open Font License, Version 1.1:
 
 fraunces.woff2 (subset to Latin and instanced; no Reserved Font Name)
 Copyright 2018 The Fraunces Project Authors (https://github.com/undercasetype/Fraunces)
 
 recursive-mono.woff2 (subset to Latin and instanced; no Reserved Font Name)
 Copyright 2020 The Recursive Project Authors (https://github.com/arrowtype/recursive)
+
+source-serif-greek.woff2 (Source Serif 4, subset to three Greek letters and instanced; no Reserved Font Name)
+Copyright 2014 The Source Serif 4 Project Authors (https://github.com/adobe-fonts/source-serif)
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:
