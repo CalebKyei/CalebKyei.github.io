@@ -1,0 +1,4 @@
+# Plain static site. Keep the repo's notes off the published pages.
+exclude:
+  - AGENTS.md
+  - task.md

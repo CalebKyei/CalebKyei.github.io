@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caleb Kyei</title>
+<meta name="description" content="Caleb Kyei, control and power electronics engineer.">
+<link rel="icon" href="https://avatars.githubusercontent.com/u/73616599?v=4&amp;s=64">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f7f7f5; --surface: #ffffff; --text: #1d1d1f; --muted: #5f6368;
+    --border: #e3e3e0; --accent: #1f6feb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111214; --surface: #1a1b1e; --text: #ececec; --muted: #a0a4ab;
+      --border: #2c2e33; --accent: #58a6ff;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 680px; margin: 0 auto; padding: 72px 16px 40px; }
+  header { display: flex; gap: 24px; align-items: center; }
+  .avatar { width: 112px; height: 112px; border-radius: 50%; border: 1px solid var(--border); flex: none; }
+  h1 { margin: 0; font-size: 2rem; letter-spacing: -0.01em; line-height: 1.2; }
+  .handle { margin: 4px 0 0; color: var(--muted); }
+  .bio { margin: 28px 0 0; font-size: 1.125rem; }
+  .meta { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 6px 20px; color: var(--muted); font-size: .95rem; }
+  .meta:empty { display: none; }
+  .meta a { color: inherit; }
+  .button {
+    display: inline-block; margin-top: 28px; padding: 9px 16px; border: 1px solid var(--border);
+    border-radius: 8px; background: var(--surface); color: var(--text); text-decoration: none; font-weight: 500;
+  }
+  .button:hover, .repo:hover { border-color: var(--accent); }
+  section { margin-top: 48px; }
+  h2 { margin: 0 0 12px; font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .repos { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+  .repo {
+    display: block; padding: 16px; border: 1px solid var(--border); border-radius: 10px;
+    background: var(--surface); color: inherit; text-decoration: none;
+  }
+  .repo strong { color: var(--accent); }
+  .repo p { margin: 6px 0 10px; color: var(--muted); font-size: .95rem; }
+  .repo small { color: var(--muted); }
+  footer {
+    display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 64px; padding-top: 16px;
+    border-top: 1px solid var(--border); color: var(--muted); font-size: .875rem;
+  }
+  footer a { color: inherit; }
+  @media (max-width: 480px) {
+    main { padding-top: 40px; }
+    header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img class="avatar" id="avatar" src="https://avatars.githubusercontent.com/u/73616599?v=4" alt="" width="112" height="112">
+    <div>
+      <h1 id="name">Caleb Kyei</h1>
+      <p class="handle">@CalebKyei</p>
+    </div>
+  </header>
+  <p class="bio" id="bio">Control and Power Electronics Engineer. I like to build things to make life easier.</p>
+  <ul class="meta" id="meta"></ul>
+  <a class="button" href="https://github.com/CalebKyei">View profile on GitHub</a>
+
+  <section id="repos-section" hidden>
+    <h2>Public repositories</h2>
+    <div class="repos" id="repos"></div>
+  </section>
+
+  <footer>
+    <span>© <span id="year">2026</span> Caleb Kyei</span>
+    <a href="privacy.html">Privacy policy</a>
+  </footer>
+</main>
+<script>
+  // Mirrors the public GitHub profile. The markup above is a static copy of it, so the page still
+  // reads correctly when the API is unreachable or rate-limited (60 requests/hour per visitor).
+  (async () => {
+    const user = 'CalebKyei';
+    const $ = (id) => document.getElementById(id);
+    const get = (path) => fetch('https://api.github.com/' + path, { headers: { Accept: 'application/vnd.github+json' } })
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
+    const el = (tag, text, cls) => {
+      const e = document.createElement(tag);
+      if (text) e.textContent = text;
+      if (cls) e.className = cls;
+      return e;
+    };
+    $('year').textContent = new Date().getFullYear();
+
+    try {
+      const u = await get('users/' + user);
+      if (u.name) $('name').textContent = u.name;
+      if (u.bio) $('bio').textContent = u.bio.trim();
+      if (u.avatar_url) $('avatar').src = u.avatar_url;
+      const meta = $('meta');
+      if (u.company) meta.append(el('li', u.company));
+      if (u.location) meta.append(el('li', u.location));
+      if (u.blog) {
+        const a = el('a', u.blog.replace(/^https?:\/\//, '').replace(/\/$/, ''));
+        a.href = /^https?:\/\//.test(u.blog) ? u.blog : 'https://' + u.blog;
+        const li = el('li');
+        li.append(a);
+        meta.append(li);
+      }
+    } catch (e) { /* keep the static copy */ }
+
+    try {
+      const site = (user + '.github.io').toLowerCase();
+      const repos = (await get('users/' + user + '/repos?per_page=100&sort=pushed'))
+        .filter((r) => !r.fork && !r.archived && r.name.toLowerCase() !== site);
+      for (const r of repos) {
+        const card = el('a', null, 'repo');
+        card.href = r.html_url;
+        card.append(el('strong', r.name), el('p', r.description || ''));
+        const bits = [r.language, r.stargazers_count ? '★ ' + r.stargazers_count : null,
+          'updated ' + new Date(r.pushed_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short' })];
+        card.append(el('small', bits.filter(Boolean).join(' · ')));
+        $('repos').append(card);
+      }
+      $('repos-section').hidden = repos.length === 0;
+    } catch (e) { /* no repository list */ }
+  })();
+</script>
+</body>
+</html>
