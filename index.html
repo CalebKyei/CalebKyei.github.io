@@ -3,133 +3,374 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Caleb Kyei</title>
-<meta name="description" content="Caleb Kyei, control and power electronics engineer.">
-<link rel="icon" href="https://avatars.githubusercontent.com/u/73616599?v=4&amp;s=64">
-<style>
-  :root {
-    color-scheme: light dark;
-    --bg: #f7f7f5; --surface: #ffffff; --text: #1d1d1f; --muted: #5f6368;
-    --border: #e3e3e0; --accent: #1f6feb;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #111214; --surface: #1a1b1e; --text: #ececec; --muted: #a0a4ab;
-      --border: #2c2e33; --accent: #58a6ff;
-    }
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--bg); color: var(--text);
-    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  }
-  main { max-width: 680px; margin: 0 auto; padding: 72px 16px 40px; }
-  header { display: flex; gap: 24px; align-items: center; }
-  .avatar { width: 112px; height: 112px; border-radius: 50%; border: 1px solid var(--border); flex: none; }
-  h1 { margin: 0; font-size: 2rem; letter-spacing: -0.01em; line-height: 1.2; }
-  .handle { margin: 4px 0 0; color: var(--muted); }
-  .bio { margin: 28px 0 0; font-size: 1.125rem; }
-  .meta { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 6px 20px; color: var(--muted); font-size: .95rem; }
-  .meta:empty { display: none; }
-  .meta a { color: inherit; }
-  .button {
-    display: inline-block; margin-top: 28px; padding: 9px 16px; border: 1px solid var(--border);
-    border-radius: 8px; background: var(--surface); color: var(--text); text-decoration: none; font-weight: 500;
-  }
-  .button:hover, .repo:hover { border-color: var(--accent); }
-  section { margin-top: 48px; }
-  h2 { margin: 0 0 12px; font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-  .repos { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
-  .repo {
-    display: block; padding: 16px; border: 1px solid var(--border); border-radius: 10px;
-    background: var(--surface); color: inherit; text-decoration: none;
-  }
-  .repo strong { color: var(--accent); }
-  .repo p { margin: 6px 0 10px; color: var(--muted); font-size: .95rem; }
-  .repo small { color: var(--muted); }
-  footer {
-    display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 64px; padding-top: 16px;
-    border-top: 1px solid var(--border); color: var(--muted); font-size: .875rem;
-  }
-  footer a { color: inherit; }
-  @media (max-width: 480px) {
-    main { padding-top: 40px; }
-    header { flex-direction: column; align-items: flex-start; gap: 16px; }
-  }
-</style>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' https://avatars.githubusercontent.com; connect-src https://api.github.com; base-uri 'none'; form-action 'none'">
+<title>Caleb Kyei · Control and power electronics engineer</title>
+<meta name="description" content="Caleb Kyei, control and power electronics engineer: 4.5 years at Signify R&amp;D, now on the Erasmus Mundus DREAM triple master's. Open to a 6-month master's thesis from February 2027.">
+<meta name="author" content="Caleb Kyei">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f5f4ef" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e1013" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://calebkyei.github.io/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="assets/site.css">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Caleb Kyei">
+<meta property="og:title" content="Caleb Kyei · Control and power electronics engineer">
+<meta property="og:description" content="4.5 years at Signify R&amp;D, now on the Erasmus Mundus DREAM triple master's. Open to a 6-month master's thesis from February 2027.">
+<meta property="og:url" content="https://calebkyei.github.io/">
+<meta property="og:image" content="https://calebkyei.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Caleb Kyei, control and power electronics engineer, over a sinusoidal PWM waveform.">
+<meta property="og:locale" content="en_GB">
+<meta property="profile:first_name" content="Caleb">
+<meta property="profile:last_name" content="Kyei">
+<meta name="twitter:card" content="summary_large_image">
+<script src="assets/scope.js" defer></script>
+<script src="assets/github.js" defer></script>
 </head>
 <body>
-<main>
-  <header>
-    <img class="avatar" id="avatar" src="https://avatars.githubusercontent.com/u/73616599?v=4" alt="" width="112" height="112">
-    <div>
-      <h1 id="name">Caleb Kyei</h1>
-      <p class="handle">@CalebKyei</p>
-    </div>
-  </header>
-  <p class="bio" id="bio">Control and Power Electronics Engineer. I like to build things to make life easier.</p>
-  <ul class="meta" id="meta"></ul>
-  <a class="button" href="https://github.com/CalebKyei">View profile on GitHub</a>
+<a class="skip" href="#main">Skip to content</a>
 
-  <section id="repos-section" hidden>
-    <h2>Public repositories</h2>
-    <div class="repos" id="repos"></div>
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="wordmark" href="#top">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <rect x=".5" y=".5" width="31" height="31" rx="8" fill="#15171b" stroke="#2c3138"/>
+        <path d="M5 23 7.2 9l2.2 14 2.2-14 2.2 14L16 9l2.2 14 2.2-14 2.2 14 2.2-14L27 23" fill="none" stroke="#ffc247" stroke-width="1.3" stroke-linejoin="round" opacity=".75"/>
+        <path d="M5 16c3.7-12.4 7.3-12.4 11 0s7.3 12.4 11 0" fill="none" stroke="#52d3ff" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      Caleb Kyei
+    </a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero-band">
+    <section class="hero wrap" id="top" aria-labelledby="name">
+      <div class="hero__text">
+        <p class="eyebrow">Control and power electronics engineer</p>
+        <h1 id="name">Caleb Kyei</h1>
+        <p class="lede">I like to build things to make life easier.</p>
+        <p class="summary">4.5 years at Signify R&amp;D, two of them as an engineer, including a digital PID design
+          tool for high-power PFC that cut design time from a week to minutes. Now on the Erasmus Mundus DREAM
+          triple master's in Nantes, Berlin and Barcelona, focused on converter and grid control.</p>
+        <p class="status"><span class="status__dot" aria-hidden="true"></span>
+          <span>Open to a 6-month master's thesis, 1&nbsp;February&nbsp;– 31&nbsp;July&nbsp;2027, in industry or at a
+          research institute.</span></p>
+        <p class="print-only print-contact">calebkyei.github.io · github.com/CalebKyei</p>
+        <p class="cta">
+          <a class="btn btn--primary" href="#contact">Get in touch</a>
+          <a class="btn" href="https://github.com/CalebKyei">GitHub
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 5h8v8M15 5 5 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </p>
+      </div>
+
+      <figure class="scope" aria-labelledby="scope-title">
+        <div class="scope__bezel">
+          <div class="scope__head">
+            <h2 class="scope__title" id="scope-title">Sinusoidal PWM, live</h2>
+            <ul class="scope__legend" aria-hidden="true">
+              <li class="ch1">1 · reference, carrier</li>
+              <li class="ch2">2 · bridge</li>
+              <li class="ch3">3 · filtered</li>
+            </ul>
+          </div>
+          <div class="scope__screen">
+            <canvas id="scope-canvas" role="img" aria-label="Oscilloscope view of sinusoidal pulse-width modulation."></canvas>
+            <noscript><p class="scope__nojs">This interactive waveform needs JavaScript.</p></noscript>
+          </div>
+          <dl class="scope__readout">
+            <div><dt>f<sub>sw</sub></dt><dd id="ro-fsw">750 Hz</dd></div>
+            <div><dt>V<sub>1</sub> out</dt><dd id="ro-v1">–</dd></div>
+            <div><dt>THD out</dt><dd id="ro-thd">–</dd></div>
+            <div><dt>time</dt><dd id="ro-tdiv">4 ms/div</dd></div>
+          </dl>
+          <p class="scope__flag" id="ro-flag" hidden>Overmodulation: low-order harmonics appear</p>
+          <div class="scope__controls">
+            <div class="knob">
+              <label for="ma"><span>Modulation index m<sub>a</sub></span> <output for="ma" id="ma-out">0.80</output></label>
+              <input type="range" id="ma" min="0.1" max="1.3" step="0.05" value="0.8">
+            </div>
+            <div class="knob">
+              <label for="mf"><span>Carrier ratio m<sub>f</sub></span> <output for="mf" id="mf-out">15</output></label>
+              <input type="range" id="mf" min="3" max="45" step="2" value="15">
+            </div>
+            <fieldset class="seg">
+              <legend>Switching</legend>
+              <div class="seg__opts">
+                <label><input type="radio" name="scheme" value="bipolar" checked><span>Bipolar</span></label>
+                <label><input type="radio" name="scheme" value="unipolar"><span>Unipolar</span></label>
+              </div>
+            </fieldset>
+            <button type="button" class="btn scope__run" id="scope-run" hidden>Pause sweep</button>
+          </div>
+        </div>
+        <figcaption>A comparator switches the DC bus each time the sine reference crosses the triangle carrier, and an
+          LC filter turns the pulses back into a sine. Raise the carrier ratio, or switch to unipolar, and watch the
+          distortion fall. Simulated in your browser.</figcaption>
+        <p class="visually-hidden" id="scope-live" aria-live="polite"></p>
+      </figure>
+    </section>
+  </div>
+
+  <section class="section glance" aria-labelledby="glance-h">
+    <div class="wrap">
+      <h2 class="visually-hidden" id="glance-h">At a glance</h2>
+      <dl class="specs">
+        <div><dt>Now</dt><dd>Erasmus Mundus DREAM triple master's: Nantes, Berlin, Barcelona</dd></div>
+        <div><dt>Experience</dt><dd>4.5 years at Signify R&amp;D, Eindhoven</dd></div>
+        <div><dt>Focus</dt><dd>Converter and grid control, model predictive control</dd></div>
+        <div><dt>Seeking</dt><dd>6-month master's thesis, Feb – Jul 2027</dd></div>
+        <div><dt>Tools</dt><dd>MATLAB, Simulink, Python, C/C++, LTspice</dd></div>
+        <div><dt>Degree</dt><dd>BSc Electrical and Electronics Engineering, cum laude</dd></div>
+        <div><dt>Languages</dt><dd>English, Dutch, French, German</dd></div>
+        <div><dt>Based in</dt><dd>Barcelona</dd></div>
+      </dl>
+    </div>
   </section>
 
-  <footer>
+  <section class="section" id="experience" aria-labelledby="experience-h">
+    <div class="wrap">
+      <div class="section__head"><span class="section__no" aria-hidden="true">01</span><h2 id="experience-h">Experience</h2></div>
+
+      <div class="org">
+        <div>
+          <h3>Signify <span class="org__aka">formerly Philips Lighting</span></h3>
+          <p class="meta">Eindhoven, NL · Feb 2021 – Aug 2025</p>
+        </div>
+        <ol class="roles">
+          <li class="role">
+            <div class="role__head"><h4>Electronics Development Engineer</h4><p class="role__when">Aug 2023 – Aug 2025</p></div>
+            <ul>
+              <li>Developed switch-mode LED drivers for luminaire builders, including soft-switching power stages and
+                isolated flyback auxiliary supplies; horticulture lighting among the applications.</li>
+              <li>Worked across embedded hardware and software, and driver communication interfaces such as Modbus.</li>
+            </ul>
+          </li>
+          <li class="role">
+            <div class="role__head"><h4>Graduation Intern, Digital Control</h4><p class="role__when">Feb 2023 – Jul 2023</p></div>
+            <ul>
+              <li>Built a MATLAB/Simulink, Python and Excel design tool for a digital PID controller in high-power PFC,
+                automating parameter generation, optimisation and verification. Design time went from a week to minutes.</li>
+            </ul>
+          </li>
+          <li class="role">
+            <div class="role__head"><h4>Power Electronics Intern</h4><p class="role__when">Feb 2022 – Jan 2023</p></div>
+            <ul>
+              <li>Investigated SiC MOSFET power stages for outdoor LED drivers, and embedded buck-stage switching control.</li>
+            </ul>
+          </li>
+          <li class="role">
+            <div class="role__head"><h4>Test Automation Intern</h4><p class="role__when">Feb 2021 – Jan 2022</p></div>
+            <ul>
+              <li>Automated embedded testing of emergency LED drivers in R&amp;D.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+
+      <div class="org">
+        <div>
+          <h3>Robotics Team Pi <span class="org__aka">FRC robotics team</span></h3>
+          <p class="meta">Eindhoven, NL · Sep 2020 – Aug 2022</p>
+        </div>
+        <ol class="roles">
+          <li class="role">
+            <div class="role__head"><h4>Software Designer, then Mentor</h4><p class="role__when">Sep 2020 – Aug 2022</p></div>
+            <ul>
+              <li>Wrote C++ autonomous aim-assist and swerve/differential drive control; later led the team's software mentoring.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects" aria-labelledby="projects-h">
+    <div class="wrap">
+      <div class="section__head"><span class="section__no" aria-hidden="true">02</span><h2 id="projects-h">Selected projects</h2></div>
+      <ul class="cards">
+        <li class="card">
+          <p class="meta">CITCEA-UPC, Barcelona · since Sep 2026 · individual <span class="badge">In progress</span></p>
+          <h3>Grid-connected converter control</h3>
+          <p>An averaged grid-following voltage-source converter with an SRF-PLL and decoupled d-q current control.
+            Swept short-circuit ratio and X/R to assess stability against PLL bandwidth, and added DC-link voltage
+            control, current limiting and anti-windup.</p>
+          <p class="card__next">Grid-forming control of a modular multilevel converter (MMC) is a planned extension, to be
+            completed before the thesis.</p>
+          <ul class="tags"><li>Simscape</li><li>SRF-PLL</li><li>d-q control</li><li>Weak grid</li></ul>
+        </li>
+        <li class="card">
+          <p class="meta">HTW Berlin · 2026 · team project</p>
+          <h3>EV powertrain with model predictive control</h3>
+          <p>A Simulink model of a 1.55&nbsp;MW quad-motor EV drive with PMSM field-oriented control and adaptive cruise
+            control (ISO&nbsp;15622 constant time gap). My part: the state-space MPC speed controller. Speed overshoot
+            stayed below 0.05&nbsp;km/h.</p>
+          <ul class="tags"><li>Simulink</li><li>MPC</li><li>PMSM FOC</li></ul>
+        </li>
+        <li class="card">
+          <p class="meta">HTW Berlin · 2026</p>
+          <h3>Day-ahead solar forecasting</h3>
+          <p>A Python day-ahead solar forecast for the 50Hertz area, built from public ENTSO-E data: a physics-based PV
+            ensemble with spread-adaptive quantiles. RMSE under 6% of the 11.6&nbsp;GW mean daily peak, ranking 2nd of 16
+            entries, behind only the TSO baseline.</p>
+          <ul class="tags"><li>Python</li><li>Probabilistic forecasting</li><li>ENTSO-E</li></ul>
+        </li>
+        <li class="card">
+          <p class="meta">École Centrale de Nantes · 2025 – 2026</p>
+          <h3>2&nbsp;MW DFIG wind turbine supervisory control</h3>
+          <p>A supervisory finite-state machine that switches between MPPT and rated-power modes with anti-chattering
+            hysteresis, coordinating rotor-side converter torque with the pitch actuators. Stability and C<sub>p</sub>
+            optimisation validated in MATLAB/Simulink under turbulent wind.</p>
+          <ul class="tags"><li>MATLAB/Simulink</li><li>Supervisory control</li><li>Wind</li></ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="education" aria-labelledby="education-h">
+    <div class="wrap">
+      <div class="section__head"><span class="section__no" aria-hidden="true">03</span><h2 id="education-h">Education</h2></div>
+
+      <div class="programme">
+        <h3>Erasmus Mundus Joint Master DREAM</h3>
+        <p class="meta">Triple master's degree · 2025 – 2027</p>
+        <ol class="route">
+          <li class="stop">
+            <p class="stop__sem">Semester 1 · Sep 2025 – Feb 2026</p>
+            <h4>École Centrale de Nantes</h4>
+            <p>MSc Control and Robotics</p>
+            <p class="focus">Advanced control architectures and power system dynamics.</p>
+            <ul>
+              <li>Robust and optimal control (SMC, LQR), Kalman filtering and system identification.</li>
+              <li>MILP/KKT scheduling optimisation; power-system stability and inertia modelled with DAEs.</li>
+            </ul>
+          </li>
+          <li class="stop">
+            <p class="stop__sem">Semester 2 · Mar 2026 – Aug 2026</p>
+            <h4>HTW Berlin</h4>
+            <p>MSc Electrical Engineering</p>
+            <p class="focus">Electric vehicle drives, grid control, power electronics, wind and PV engineering.</p>
+            <ul>
+              <li>Team project: a 10&nbsp;kVA grid-following inverter in Simulink, with SRF-PLL, decoupled d-q current
+                control, SPWM and LCL filter design.</li>
+            </ul>
+          </li>
+          <li class="stop">
+            <p class="stop__sem">Semesters 3 &amp; 4 · Sep 2026 – Aug 2027</p>
+            <h4>Universitat Politècnica de Catalunya</h4>
+            <p>MSc Energy Engineering</p>
+            <p class="focus">Grid-forming control, renewable grid integration, power quality, AI and data science.</p>
+            <ul>
+              <li>Coursework in progress: Renewable Grid Integration (grid-forming, grid codes, HVDC, microgrids), Power
+                Quality, AI in Energy Systems (MLP, LSTM, CNN), Data Science for Energy Systems.</li>
+              <li>Master's thesis, 6 months: 1 February – 31 July 2027.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+
+      <div class="programme single">
+        <h3>Fontys University of Applied Sciences</h3>
+        <p class="meta">Eindhoven, NL · 2019 – 2023</p>
+        <p>BSc Electrical and Electronics Engineering, cum laude. Thesis: <em>Digital Control in Power Systems</em>.
+          PROUD Honours Programme. Minor in Performance Coaching and Training.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills" aria-labelledby="skills-h">
+    <div class="wrap">
+      <div class="section__head"><span class="section__no" aria-hidden="true">04</span><h2 id="skills-h">Skills</h2></div>
+      <div class="skills">
+        <div>
+          <h3>Control</h3>
+          <ul class="tags"><li>Model predictive control</li><li>LQR</li><li>Sliding-mode control</li><li>Supervisory control (FSM)</li><li>Kalman filtering</li><li>System identification</li><li>Model-based design</li></ul>
+        </div>
+        <div>
+          <h3>Power</h3>
+          <ul class="tags"><li>Power electronics and inverters</li><li>EV powertrains and FOC drives</li><li>Power system stability</li><li>Renewable energy systems</li></ul>
+        </div>
+        <div>
+          <h3>Software and tools</h3>
+          <ul class="tags"><li>MATLAB</li><li>Simulink</li><li>Stateflow</li><li>LTspice</li><li>Python (PyTorch, scikit-learn, pvlib)</li><li>Reinforcement learning</li><li>C</li><li>C++</li><li>Docker</li><li>GitLab CI/CD</li><li>Git</li></ul>
+        </div>
+        <div>
+          <h3>Research interests</h3>
+          <ul class="plain">
+            <li>Converter and inverter control</li>
+            <li>MMC and grid-forming control</li>
+            <li>Model predictive and optimal control</li>
+            <li>EV powertrains and FOC drives</li>
+            <li>Power system stability</li>
+            <li>ML forecasting for energy systems</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Languages</h3>
+          <ul class="plain">
+            <li>English <span class="lvl">native/bilingual</span></li>
+            <li>Dutch <span class="lvl">B1</span></li>
+            <li>French <span class="lvl">A2+</span></li>
+            <li>German <span class="lvl">A1.2</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Certifications and honours</h3>
+          <ul class="plain">
+            <li>Advanced Modeling and Simulation of Power Electronic Systems using PLECS <span class="lvl">Plexim, 2023</span></li>
+            <li>Agile with Atlassian Jira</li>
+            <li>Performance Coach</li>
+            <li>Top Talent Scholarship, Fontys (4×), for academic excellence</li>
+            <li>ECHO mentorship programme <span class="lvl">Google mentor</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="code" aria-labelledby="code-h" hidden>
+    <div class="wrap">
+      <div class="section__head"><span class="section__no" aria-hidden="true">05</span><h2 id="code-h">Public code</h2></div>
+      <div class="repos" id="repos"></div>
+    </div>
+  </section>
+
+  <section class="section" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="contact__panel">
+        <h2 id="contact-h">Let's talk</h2>
+        <p>If your team works on converter or grid control and could host a master's thesis from February 2027, I would
+          like to hear from you.</p>
+        <ul class="contact__list">
+          <li>
+            <a class="contact__link" href="https://github.com/CalebKyei">
+              <img src="https://avatars.githubusercontent.com/u/73616599?v=4&amp;s=80" width="40" height="40" alt="" loading="lazy">
+              <span><strong>GitHub</strong><small>github.com/CalebKyei</small></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
     <span>© <span id="year">2026</span> Caleb Kyei</span>
     <a href="privacy.html">Privacy policy</a>
-  </footer>
-</main>
-<script>
-  // Mirrors the public GitHub profile. The markup above is a static copy of it, so the page still
-  // reads correctly when the API is unreachable or rate-limited (60 requests/hour per visitor).
-  (async () => {
-    const user = 'CalebKyei';
-    const $ = (id) => document.getElementById(id);
-    const get = (path) => fetch('https://api.github.com/' + path, { headers: { Accept: 'application/vnd.github+json' } })
-      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
-    const el = (tag, text, cls) => {
-      const e = document.createElement(tag);
-      if (text) e.textContent = text;
-      if (cls) e.className = cls;
-      return e;
-    };
-    $('year').textContent = new Date().getFullYear();
-
-    try {
-      const u = await get('users/' + user);
-      if (u.name) $('name').textContent = u.name;
-      if (u.bio) $('bio').textContent = u.bio.trim();
-      if (u.avatar_url) $('avatar').src = u.avatar_url;
-      const meta = $('meta');
-      if (u.company) meta.append(el('li', u.company));
-      if (u.location) meta.append(el('li', u.location));
-      if (u.blog) {
-        const a = el('a', u.blog.replace(/^https?:\/\//, '').replace(/\/$/, ''));
-        a.href = /^https?:\/\//.test(u.blog) ? u.blog : 'https://' + u.blog;
-        const li = el('li');
-        li.append(a);
-        meta.append(li);
-      }
-    } catch (e) { /* keep the static copy */ }
-
-    try {
-      const site = (user + '.github.io').toLowerCase();
-      const repos = (await get('users/' + user + '/repos?per_page=100&sort=pushed'))
-        .filter((r) => !r.fork && !r.archived && r.name.toLowerCase() !== site);
-      for (const r of repos) {
-        const card = el('a', null, 'repo');
-        card.href = r.html_url;
-        card.append(el('strong', r.name), el('p', r.description || ''));
-        const bits = [r.language, r.stargazers_count ? '★ ' + r.stargazers_count : null,
-          'updated ' + new Date(r.pushed_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short' })];
-        card.append(el('small', bits.filter(Boolean).join(' · ')));
-        $('repos').append(card);
-      }
-      $('repos-section').hidden = repos.length === 0;
-    } catch (e) { /* no repository list */ }
-  })();
-</script>
+  </div>
+</footer>
 </body>
 </html>
