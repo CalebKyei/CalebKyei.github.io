@@ -8,13 +8,13 @@
 <meta name="description" content="Caleb Kyei, control and power electronics engineer: 4.5 years at Signify R&amp;D, now on the Erasmus Mundus DREAM triple master's. Open to a 6-month master's thesis from February 2027.">
 <meta name="author" content="Caleb Kyei">
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#f3f2ee" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0a0b0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f5f6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#37363d" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://calebkyei.github.io/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preload" href="assets/fonts/plex-sans-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/recursive-mono.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css">
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="Caleb Kyei">
@@ -24,12 +24,12 @@
 <meta property="og:image" content="https://calebkyei.github.io/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Caleb Kyei, control and power electronics engineer, beside a sinusoidal PWM oscilloscope trace.">
+<meta property="og:image:alt" content="Caleb Kyei, control and power electronics engineer, beside a one-line diagram of a small grid.">
 <meta property="og:locale" content="en_GB">
 <meta property="profile:first_name" content="Caleb">
 <meta property="profile:last_name" content="Kyei">
 <meta name="twitter:card" content="summary_large_image">
-<script src="assets/scope.js" defer></script>
+<script src="assets/grid.js" defer></script>
 <script src="assets/site.js" defer></script>
 </head>
 <body>
@@ -55,19 +55,23 @@
     <section class="hero" id="top" aria-labelledby="name">
       <div>
         <p class="eyebrow">Control and power electronics engineer</p>
-        <h1 class="display" id="name">Caleb Kyei</h1>
+        <div class="hero__id">
+          <h1 class="display" id="name">Caleb Kyei</h1>
+          <img class="portrait" src="assets/img/caleb-kyei.webp" width="640" height="800" alt="Caleb Kyei" decoding="async">
+        </div>
       </div>
       <div>
-        <p class="intro">I like to build things to make life easier. I spent <strong>4.5 years at Signify R&amp;D</strong>,
-          the last two as an electronics development engineer, and built a digital PID design tool for high-power PFC that
-          cut design time from a week to minutes. Now I am on the <strong>Erasmus Mundus DREAM</strong> triple master's in
-          Nantes, Berlin and Barcelona, focused on converter and grid control.</p>
+        <p class="intro">I design control for power converters, from LED drivers to the grid. In <strong>4.5 years at
+          Signify R&amp;D</strong>, the last two as an engineer, I built a PID design tool that cut design time from a
+          week to minutes. Now, on the <strong>Erasmus Mundus DREAM</strong> triple master's, I am building
+          grid-connected converter control at CITCEA-UPC and verifying it block by block.</p>
         <p class="status"><span class="status__dot" aria-hidden="true"></span>
           <span>Open to a 6-month master's thesis, 1&nbsp;February&nbsp;– 31&nbsp;July&nbsp;2027, in industry or at a
           research institute.</span></p>
-        <p class="print-only print-contact">calebkyei.github.io · github.com/CalebKyei</p>
+        <p class="print-only print-contact">calebkyei.github.io · github.com/CalebKyei · <a href="https://www.linkedin.com/in/caleb-kyei">linkedin.com/in/caleb-kyei</a> · PDF: <a href="https://calebkyei.github.io/assets/caleb-kyei-cv.pdf">calebkyei.github.io/assets/caleb-kyei-cv.pdf</a></p>
         <p class="cta">
           <a class="btn btn--solid" href="#work">See selected work</a>
+          <a class="btn" href="assets/caleb-kyei-cv.pdf" type="application/pdf">Download CV <span class="btn__note">PDF</span></a>
           <a class="btn" href="#contact">Get in touch</a>
         </p>
       </div>
@@ -80,52 +84,98 @@
       <div><dt class="label">Based in</dt><dd>Barcelona</dd></div>
     </dl>
 
-    <figure class="instrument scope" aria-labelledby="scope-title">
-      <div class="instrument__screen">
-        <canvas id="scope-canvas" role="img" aria-label="Oscilloscope view of sinusoidal pulse-width modulation."></canvas>
-        <ul class="scope__legend" aria-hidden="true">
-          <li class="ch1">1 reference, carrier</li>
-          <li class="ch2">2 bridge</li>
-          <li class="ch3">3 filtered</li>
-        </ul>
-        <noscript><p class="scope__nojs">This interactive waveform needs JavaScript.</p></noscript>
+    <figure class="minigrid" id="minigrid" aria-labelledby="mg-title">
+      <p class="minigrid__hint" aria-hidden="true">try the sliders<svg viewBox="0 0 132 80"><path d="M3 9c22-6 44-4 52 10 6 11-6 20-14 12-8-9 6-21 24-16 22 6 40 26 52 58"/><path d="M110 66l7 7 3-10"/></svg></p>
+      <div class="minigrid__stage">
+<svg class="grid" viewBox="0 0 440 300" role="group" aria-label="One-line diagram of a small grid. Each block links to a project.">
+<path class="wire" d="M45 150H96M150 42v22M150 94v56M250 104v46M122 150v34M300 150v26M300 198v24M390 150v54"/>
+<path class="bus" d="M96 150H428"/>
+<g aria-hidden="true">
+<path class="flow" data-k="grid" d="M46 150H95"/>
+<path class="flow" data-k="pv" d="M150 43V149"/>
+<path class="flow" data-k="wt" d="M250 105V149"/>
+<path class="flow" data-k="load" d="M300 151V233"/>
+<path class="flow" data-k="ev" d="M390 151V203"/>
+<path class="arrow" id="grid-arrow" d="M66 145l8 5-8 5z"/>
+</g>
+<circle class="comp" cx="28" cy="150" r="17"/>
+<path class="glyph" d="M19 150q4.5-8 9 0t9 0"/>
+<text class="lbl" x="28" y="186" text-anchor="middle">Grid</text>
+<path class="comp" d="M282 256v-22l18-12 18 12v22z"/>
+<text class="lbl" x="326" y="250">Load</text>
+<circle class="node" cx="96" cy="150" r="4"/>
+<text class="lbl" x="96" y="138" text-anchor="middle">PCC</text>
+<a href="projects/solar-forecast.html" aria-label="Solar PV: day-ahead solar forecasting project">
+<rect class="hit" x="96" y="8" width="84" height="40"/>
+<rect class="comp" x="128" y="14" width="44" height="28" rx="2"/>
+<path class="glyph" d="M142.7 14v28M157.3 14v28M128 28h44"/>
+<text class="lbl" x="122" y="32" text-anchor="end">PV</text>
+<text class="tip" x="220" y="292" text-anchor="middle">Day-ahead solar forecasting →</text>
+</a>
+<a href="projects/grid-converter.html" aria-label="Grid-connected converter: converter control project">
+<rect class="hit" x="96" y="58" width="76" height="42"/>
+<rect class="comp" x="134" y="64" width="32" height="30" rx="2"/>
+<path class="glyph" d="M134 94 166 64M138.5 70.5h8M138.5 74.5h8M152 87q2.5-4 5 0t5 0"/>
+<text class="lbl" x="128" y="83" text-anchor="end">VSC</text>
+<text class="tip" x="220" y="292" text-anchor="middle">Grid-connected converter control →</text>
+</a>
+<a href="projects/dfig-supervisory.html" aria-label="Wind turbine: supervisory control project" id="wt-link">
+<rect class="hit" x="218" y="2" width="78" height="106"/>
+<path class="comp" d="M248 40h4l2.5 64h-9z"/>
+<g id="rotor"><path class="blade" d="M250 34c-3-9-2.5-19 0-27 2.5 8 3 18 0 27z"/><path class="blade" d="M250 34c-3-9-2.5-19 0-27 2.5 8 3 18 0 27z" transform="rotate(120 250 34)"/><path class="blade" d="M250 34c-3-9-2.5-19 0-27 2.5 8 3 18 0 27z" transform="rotate(240 250 34)"/></g>
+<circle class="comp" cx="250" cy="34" r="3.5"/>
+<text class="lbl" x="262" y="100">Wind</text>
+<text class="tip" x="220" y="292" text-anchor="middle">DFIG wind turbine: supervisory control →</text>
+</a>
+<a href="projects/active-filter-lab.html" aria-label="Active filter: active harmonic filter lab">
+<rect class="hit" x="56" y="176" width="88" height="42"/>
+<rect class="comp" x="106" y="184" width="32" height="26" rx="2"/>
+<path class="glyph" d="M111 197q2.75-6 5.5 0t5.5 0t5.5 0t5.5 0"/>
+<text class="lbl" x="100" y="201" text-anchor="end">Filter</text>
+<text class="tip" x="220" y="292" text-anchor="middle">Active harmonic filter lab →</text>
+</a>
+<a href="projects/pid-design-tool.html" aria-label="Power supply with PFC: digital PID design tool">
+<rect class="hit" x="276" y="170" width="76" height="34"/>
+<rect class="comp" x="282" y="176" width="36" height="22" rx="2"/>
+<text class="lbl in-box" x="300" y="191" text-anchor="middle">PFC</text>
+<text class="tip" x="220" y="292" text-anchor="middle">Digital PID design tool for PFC →</text>
+</a>
+<a href="projects/ev-mpc.html" aria-label="Electric vehicle: MPC speed controller project">
+<rect class="hit" x="358" y="196" width="66" height="54"/>
+<path class="comp" d="M368 220v-7l7-9h28l7 9h2v7z"/>
+<circle class="comp" cx="378" cy="220" r="4"/><circle class="comp" cx="402" cy="220" r="4"/>
+<text class="lbl" x="390" y="242" text-anchor="middle">EV · MPC</text>
+<text class="tip" x="220" y="292" text-anchor="middle">EV powertrain: MPC speed controller →</text>
+</a>
+</svg>
       </div>
-      <div class="instrument__panel">
+      <div class="minigrid__panel">
         <div>
-          <p class="label">Interactive</p>
-          <h2 class="instrument__title" id="scope-title">Sinusoidal PWM, live</h2>
+          <p class="label">Interactive · illustrative</p>
+          <h2 class="minigrid__title" id="mg-title">One grid, six projects</h2>
         </div>
-        <dl class="scope__readout">
-          <div><dt>f<sub>sw</sub></dt><dd id="ro-fsw">750 Hz</dd></div>
-          <div><dt>V<sub>1</sub> out</dt><dd id="ro-v1">–</dd></div>
-          <div><dt>THD out</dt><dd id="ro-thd">–</dd></div>
-          <div><dt>time</dt><dd id="ro-tdiv">4 ms/div</dd></div>
+        <dl class="minigrid__readout">
+          <div><dt>Grid frequency</dt><dd id="ro-f">50.00 Hz</dd></div>
+          <div><dt>PCC voltage</dt><dd id="ro-v">0.98 pu</dd></div>
         </dl>
-        <p class="scope__flag" id="ro-flag" hidden>Overmodulation: low-order harmonics appear</p>
-        <div class="scope__controls">
+        <div class="minigrid__controls">
           <div class="knob">
-            <label for="ma"><span>Modulation index m<sub>a</sub></span> <output for="ma" id="ma-out">0.80</output></label>
-            <input type="range" id="ma" min="0.1" max="1.3" step="0.05" value="0.8">
+            <label for="in-sun"><span>Sun</span> <output for="in-sun" id="out-sun">60 %</output></label>
+            <input type="range" id="in-sun" min="0" max="100" step="5" value="60">
           </div>
           <div class="knob">
-            <label for="mf"><span>Carrier ratio m<sub>f</sub></span> <output for="mf" id="mf-out">15</output></label>
-            <input type="range" id="mf" min="3" max="45" step="2" value="15">
+            <label for="in-wind"><span>Wind</span> <output for="in-wind" id="out-wind">9 m/s</output></label>
+            <input type="range" id="in-wind" min="0" max="30" step="0.5" value="9">
           </div>
-          <div class="scope__row">
-            <fieldset class="seg">
-              <legend class="visually-hidden">Switching scheme</legend>
-              <div class="seg__opts">
-                <label><input type="radio" name="scheme" value="bipolar" checked><span>Bipolar</span></label>
-                <label><input type="radio" name="scheme" value="unipolar"><span>Unipolar</span></label>
-              </div>
-            </fieldset>
-            <button type="button" class="btn btn--small" id="scope-run" hidden>Pause sweep</button>
+          <div class="knob">
+            <label for="in-load"><span>Load</span> <output for="in-load" id="out-load">60 %</output></label>
+            <input type="range" id="in-load" min="0" max="100" step="5" value="60">
           </div>
         </div>
-        <figcaption>A comparator switches the DC bus each time the sine reference crosses the triangle carrier; an LC
-          filter turns the pulses back into a sine. Raise the carrier ratio, or switch to unipolar, and watch the
-          distortion fall. Simulated in your browser.</figcaption>
-        <p class="visually-hidden" id="scope-live" aria-live="polite"></p>
+        <p class="minigrid__note" id="grid-note"></p>
+        <figcaption>Each block links to the project behind it. Move the sliders and watch the frequency and the PCC
+          voltage respond. A toy model for illustration, not one of my results.</figcaption>
+        <p class="visually-hidden" id="grid-live" aria-live="polite"></p>
       </div>
     </figure>
   </div>
@@ -133,14 +183,14 @@
   <section class="section" id="work" aria-labelledby="work-h">
     <div class="wrap">
       <div class="split work-head">
-        <h2 class="section-title" id="work-h">Selected work</h2>
+        <h2 class="section-title tilt" id="work-h">Selected <b>work</b></h2>
         <p class="section-intro">Five projects from the master's. Each has its own page: my part, what came out of
           it, and what I took from it.</p>
       </div>
       <ul class="tiles">
         <li>
           <a class="tile" href="projects/grid-converter.html">
-            <div class="tile__media"><img src="assets/img/citcea-system-tile.webp" width="760" height="463" alt="Control block diagram of the grid-following converter model: PLL, current controller, DC link and grid." loading="lazy"></div>
+            <div class="tile__media"><img src="assets/img/citcea-overview-tile.webp" width="760" height="315" alt="Block diagram of the converter and its control: DC link, averaged two-level converter, filter and grid, with the PLL, current loop, DC-link energy loop and AC-voltage droop." loading="lazy"></div>
             <div class="tile__body">
               <p class="tile__meta">CITCEA-UPC · since Sep 2026 · individual, in progress</p>
               <h3 class="tile__title">Grid-connected converter control</h3>
@@ -156,9 +206,9 @@
               <div class="tile__fact"><span class="label">Speed controller · my part</span><span class="big">MPC</span></div>
             </div>
             <div class="tile__body">
-              <p class="tile__meta">HTW Berlin · 2026 · team project, my part</p>
+              <p class="tile__meta">HTW Berlin · 2026 · two-person project, my part</p>
               <h3 class="tile__title">EV powertrain: MPC speed controller</h3>
-              <p class="tile__text">My part of a team model of a 1.55&nbsp;MW electric vehicle drive: a state-space model
+              <p class="tile__text">My part of a shared model of a 1.55&nbsp;MW electric vehicle drive: a state-space model
                 predictive speed controller, tested in three drive modes.</p>
               <span class="tile__more">View project →</span>
             </div>
@@ -168,9 +218,9 @@
           <a class="tile" href="projects/active-filter-lab.html">
             <div class="tile__media"><img src="assets/img/active-filter-on-tile.webp" width="760" height="317" alt="Touchpanel readout of the active filter with reactive-power compensation on: grid current 4.3 A against a load current of 17.8 A." loading="lazy"></div>
             <div class="tile__body">
-              <p class="tile__meta">HTW Berlin · 2026 · team lab, my part</p>
+              <p class="tile__meta">HTW Berlin · 2026 · lab, team of six, my part</p>
               <h3 class="tile__title">Active harmonic filter on a 400&nbsp;V bench</h3>
-              <p class="tile__text">A team lab with a commercial active filter in front of a rectifier drive. We measured the
+              <p class="tile__text">A lab with a commercial active filter in front of a rectifier drive. We measured the
                 grid current fall from 16.9 to 4.3&nbsp;A and cos&nbsp;φ rise from 0.24 to 0.95; my part was the analysis of
                 that operating point against the baseline.</p>
               <span class="tile__more">View project →</span>
@@ -193,11 +243,11 @@
         </li>
         <li>
           <a class="tile" href="projects/dfig-supervisory.html">
-            <div class="tile__media"><img src="assets/img/dfig-fsm-tile.webp" width="760" height="643" alt="Flowchart of the supervisory state machine: idle, MPPT, pitch and cut-out modes." loading="lazy"></div>
+            <div class="tile__media"><img src="assets/img/dfig-flow.svg" width="380" height="508" alt="Simplified flow of the supervisory controller: idle, MPPT, rated and cut-out states with their thresholds." loading="lazy"></div>
             <div class="tile__body">
-              <p class="tile__meta">École Centrale de Nantes · 2025 · group project, my part</p>
+              <p class="tile__meta">École Centrale de Nantes · 2025 · group of five, my part</p>
               <h3 class="tile__title">2&nbsp;MW DFIG wind turbine: supervisory control</h3>
-              <p class="tile__text">My part of a group wind-turbine model: a state machine that moves the turbine between
+              <p class="tile__text">My part of a wind-turbine model built by five students: a state machine that moves the turbine between
                 idle, maximum-power tracking, pitch-limited rated power and storm cut-out.</p>
               <span class="tile__more">View project →</span>
             </div>
@@ -213,7 +263,7 @@
 
   <section class="section" id="experience" aria-labelledby="experience-h">
     <div class="wrap split">
-      <div class="split__head"><h2 class="section-title" id="experience-h">Experience</h2></div>
+      <div class="split__head"><h2 class="section-title" id="experience-h"><b>Experience</b></h2></div>
       <div>
         <div class="org">
           <h3 class="org__name">Signify, formerly Philips Lighting</h3>
@@ -247,7 +297,7 @@
           <p class="org__meta">Eindhoven, NL · Sep 2020 – Aug 2022</p>
           <div class="role">
             <div class="role__head"><h4 class="role__title">Software Designer, then Mentor</h4><p class="role__when">Sep 2020 – Aug 2022</p></div>
-            <ul><li>Wrote C++ autonomous aim-assist and swerve/differential drive control; later led the team's software mentoring.</li></ul>
+            <ul><li>Wrote C++ autonomous aim-assist and swerve/differential drive control; later led its software mentoring.</li></ul>
           </div>
         </div>
       </div>
@@ -256,7 +306,7 @@
 
   <section class="section" id="education" aria-labelledby="education-h">
     <div class="wrap split">
-      <div class="split__head"><h2 class="section-title" id="education-h">Education</h2></div>
+      <div class="split__head"><h2 class="section-title" id="education-h"><b>Education</b></h2></div>
       <div>
         <div class="programme">
           <h3 class="programme__name">Erasmus Mundus Joint Master DREAM</h3>
@@ -278,9 +328,9 @@
             <p>MSc Electrical Engineering</p>
             <p class="focus">Electric vehicle drives, grid control, power electronics, wind and PV engineering.</p>
             <ul>
-              <li>Team project: a 10&nbsp;kVA grid-following inverter in Simulink, with SRF-PLL, decoupled d-q current
+              <li>Two-person project: a 10&nbsp;kVA grid-following inverter in Simulink, with SRF-PLL, decoupled d-q current
                 control, SPWM and LCL filter design.</li>
-              <li>Team lab: operated and measured a commercial active harmonic filter on a 400&nbsp;V test bench; my part
+              <li>Lab in a team of six: operated and measured a commercial active harmonic filter on a 400&nbsp;V test bench; my part
                 of the report was the analysis of the main operating point.</li>
             </ul>
           </div>
@@ -309,7 +359,7 @@
 
   <section class="section" id="skills" aria-labelledby="skills-h">
     <div class="wrap split">
-      <div class="split__head"><h2 class="section-title" id="skills-h">Skills</h2></div>
+      <div class="split__head"><h2 class="section-title" id="skills-h"><b>Skills</b></h2></div>
       <dl class="skills">
         <div><dt>Control</dt><dd>Model predictive control, LQR, sliding-mode control, supervisory control (FSM), Kalman filtering, system identification, model-based design</dd></div>
         <div><dt>Power</dt><dd>Power electronics and inverters, EV powertrains and FOC drives, power system stability, renewable energy systems</dd></div>
@@ -324,17 +374,21 @@
 
   <section class="section" id="code" aria-labelledby="code-h" hidden>
     <div class="wrap split">
-      <div class="split__head"><h2 class="section-title" id="code-h">Public code</h2></div>
+      <div class="split__head"><h2 class="section-title" id="code-h">Public <b>code</b></h2></div>
       <div class="repos" id="repos"></div>
     </div>
   </section>
 
   <section class="closing" id="contact" aria-labelledby="contact-h">
     <div class="wrap">
-      <h2 class="closing__title" id="contact-h">Let's talk.</h2>
-      <p class="closing__text">If your team works on converter or grid control and could host a master's thesis from
+      <h2 class="closing__title tilt" id="contact-h">Get in <b>touch</b></h2>
+      <p class="closing__text">If you work on converter or grid control and could host a master's thesis from
         February 2027, I would like to hear from you.</p>
-      <p class="cta"><a class="btn btn--solid" href="https://github.com/CalebKyei">github.com/CalebKyei</a></p>
+      <p class="cta">
+        <a class="btn btn--solid" href="https://www.linkedin.com/in/caleb-kyei">LinkedIn</a>
+        <a class="btn" href="https://github.com/CalebKyei">GitHub</a>
+        <a class="btn" href="assets/caleb-kyei-cv.pdf" type="application/pdf">Download CV <span class="btn__note">PDF</span></a>
+      </p>
     </div>
   </section>
 </main>
@@ -345,7 +399,9 @@
     <div>
       <h2>Contact</h2>
       <ul class="contact-list">
+        <li><a href="https://www.linkedin.com/in/caleb-kyei">LinkedIn</a></li>
         <li><a href="https://github.com/CalebKyei">GitHub</a></li>
+        <li><a href="assets/caleb-kyei-cv.pdf" type="application/pdf">CV (PDF)</a></li>
       </ul>
     </div>
     <div><h2>Based in</h2><ul><li>Barcelona</li></ul></div>
@@ -353,6 +409,7 @@
   </div>
   <div class="wrap site-footer__bar">
     <span>© <span id="year">2026</span> Caleb Kyei</span>
+    <span class="wiring"><span class="visually-hidden">Site colours, the IEC 60445 conductor code: </span><i class="w1" aria-hidden="true"></i>L1 <i class="w2" aria-hidden="true"></i>L2 <i class="w3" aria-hidden="true"></i>L3 <i class="wn" aria-hidden="true"></i>N</span>
     <a href="privacy.html">Privacy policy</a>
   </div>
 </footer>

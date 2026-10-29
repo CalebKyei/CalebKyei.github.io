@@ -1,0 +1,33 @@
+<svg class="flowfig" width="380" height="508" viewBox="0 0 380 508" xmlns="http://www.w3.org/2000/svg">
+<title id="flow-t">Simplified supervisory flow of the DFIG controller</title>
+<desc id="flow-d">Four states: Idle, MPPT, Rated and Cut-out. Idle to MPPT when the wind reaches cut-in, about 5 m/s, with a soft start; back to Idle below cut-in. MPPT to Rated when the generator reaches 1800 rpm; back to MPPT only below 1584 rpm. From any state to Cut-out above 25 m/s; restart below 19 m/s once the rotor has slowed.</desc>
+<style>
+.st rect{fill:#ffffff;stroke:#37363d;stroke-width:1.5}.st[data-s="mppt"] rect{fill:#c9dff3;stroke:#1d5f9c;stroke-width:2.2}
+.st-t{font:500 17px system-ui,sans-serif;fill:#1d1d21}.st-s{font:400 13px ui-monospace,monospace;fill:#707070}
+.tr{fill:none;stroke:#707070;stroke-width:1.4}.tr-l{font:400 13px ui-monospace,monospace;fill:#37363d}
+.tr-s{font:400 12px ui-monospace,monospace;fill:#707070}.head{fill:#707070}
+</style>
+<defs><marker id="fh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path class="head" d="M0 0 10 5 0 10z"/></marker></defs>
+<g class="trs">
+<path class="tr" d="M150 74V134" marker-end="url(#fh)"/>
+<path class="tr" d="M230 136V76" marker-end="url(#fh)"/>
+<path class="tr" d="M150 194V254" marker-end="url(#fh)"/>
+<path class="tr" d="M230 256V196" marker-end="url(#fh)"/>
+<path class="tr" d="M190 314V398" marker-end="url(#fh)"/>
+<path class="tr" d="M290 429H352V165H292" marker-end="url(#fh)"/>
+</g>
+<text class="tr-l" x="142" y="100" text-anchor="end">wind ≥ cut-in</text>
+<text class="tr-s" x="142" y="116" text-anchor="end">≈5 m/s, soft start</text>
+<text class="tr-l" x="238" y="104">wind &lt; cut-in</text>
+<text class="tr-l" x="142" y="226" text-anchor="end">Ω ≥ 1800 rpm</text>
+<text class="tr-l" x="238" y="222">Ω &lt; 1584 rpm</text>
+<text class="tr-s" x="238" y="238">0.88 × rated</text>
+<text class="tr-l" x="198" y="350">wind &gt; 25 m/s</text>
+<text class="tr-s" x="198" y="366">from any state</text>
+<g class="st" data-s="idle"><rect x="90" y="16" width="200" height="58" rx="3"/><text class="st-t" x="190" y="41" text-anchor="middle">Idle</text><text class="st-s" x="190" y="60" text-anchor="middle">no torque, rotor free</text></g>
+<g class="st" data-s="mppt"><rect x="90" y="136" width="200" height="58" rx="3"/><text class="st-t" x="190" y="161" text-anchor="middle">MPPT</text><text class="st-s" x="190" y="180" text-anchor="middle">T = K<tspan dy="3" font-size="9">opt</tspan><tspan dy="-3">·Ω², pitch 0°</tspan></text></g>
+<g class="st" data-s="rated"><rect x="90" y="256" width="200" height="58" rx="3"/><text class="st-t" x="190" y="281" text-anchor="middle">Rated</text><text class="st-s" x="190" y="300" text-anchor="middle">pitch PI holds 1800 rpm</text></g>
+<g class="st" data-s="cutout"><rect x="90" y="400" width="200" height="58" rx="3"/><text class="st-t" x="190" y="425" text-anchor="middle">Cut-out</text><text class="st-s" x="190" y="444" text-anchor="middle">blades feathered to 90°</text></g>
+<text class="tr-l" x="190" y="484" text-anchor="middle">restart: wind &lt; 19 m/s</text>
+<text class="tr-s" x="190" y="500" text-anchor="middle">once the rotor has slowed</text>
+</svg>

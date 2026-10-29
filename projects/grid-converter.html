@@ -8,13 +8,13 @@
 <meta name="description" content="Caleb Kyei: a two-level grid-following converter built and verified block by block, the first stage towards grid-forming control and an MMC.">
 <meta name="author" content="Caleb Kyei">
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#f3f2ee" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0a0b0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f5f6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#37363d" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://calebkyei.github.io/projects/grid-converter.html">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="preload" href="../assets/fonts/plex-sans-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../assets/fonts/plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/recursive-mono.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../assets/site.css">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Caleb Kyei">
@@ -69,11 +69,15 @@
   </dl>
 
   <figure class="plate">
-    <div class="plate__frame"><img src="../assets/img/citcea-system.webp" width="1400" height="853" alt="Block diagram of the stage-1 model: constant-power source and DC link, averaged two-level converter, filter and grid, with SRF-PLL, DC-link energy control, modulator and IMC current controller." loading="lazy" decoding="async"></div>
-    <figcaption><b>Fig. 1</b>Control structure of the stage-1 model: the DC link and its energy loop, the averaged two-level converter, filter and grid, the SRF-PLL, and the IMC current controller with decoupling and anti-windup.</figcaption>
+    <div class="plate__frame plate__frame--wide" tabindex="0" role="region" aria-label="Fig. 1, scrollable"><img src="../assets/img/citcea-overview.webp" width="1400" height="580" alt="Block diagram. Power stage: DC source, DC link with chopper, averaged two-level VSC, RL filter, PCC and grid. Discrete control: measurement and Park transform, SRF-PLL, IMC current loop with a 1 ms time constant, modulator, DC-link energy loop setting the d-axis current reference and AC-voltage droop setting the q-axis reference." loading="lazy" decoding="async"></div>
+    <figcaption><b>Fig. 1</b>The converter and its control as built so far, from my project report and slides: the averaged power stage on top, the discrete control below. Red lines carry power, blue control references, purple synchronisation.</figcaption>
+  </figure>
+  <figure class="plate">
+    <div class="plate__frame plate__frame--wide" tabindex="0" role="region" aria-label="Fig. 2, scrollable"><img src="../assets/img/citcea-model.webp" width="1600" height="504" alt="Top level of the Simulink model: Scenario, Controller_GFL, Converter_2L, AC_Filter, Grid and Measurements blocks, wired around the loop." loading="lazy" decoding="async"></div>
+    <figcaption><b>Fig. 2</b>The Simulink model at its top level: test scenario, grid-following controller, averaged two-level converter with its DC link, AC filter, grid and measurements, in Simscape Specialized Power Systems. Exported from the model, with the block previews and the solver block left out.</figcaption>
   </figure>
   <section class="block split" aria-labelledby="results1-h">
-    <div class="split__head"><h2 class="block__title" id="results1-h">Results</h2></div>
+    <div class="split__head"><h2 class="block__title" id="results1-h"><b>Results</b></h2></div>
     <ul class="results">
         <li><strong>Inner control.</strong> The 25&nbsp;Hz SRF-PLL follows its linear design through a 30° phase jump to 0.74&nbsp;% of the step. The IMC current loop matches the exact sampled-data prediction to 3&nbsp;×&nbsp;10<sup>−9</sup>&nbsp;A and settles in 3.4&nbsp;ms; the full model reproduces it to 0.5&nbsp;%.</li>
         <li><strong>Weak grid.</strong> With the 25&nbsp;Hz PLL, the first model (ideal DC source, SPWM) stayed synchronised under a rated d-axis current reference down to SCR&nbsp;1.3 (X/R = 10), in the tested cases; a faster PLL needs a stronger grid. Its exported power falls with the PCC voltage, so this is not a rated-power result.</li>
@@ -82,16 +86,16 @@
         <li><strong>Grid conditions.</strong> In balanced sags a DC chopper holds the link at 865&nbsp;V at rated power. A deep-fault profile is ridden through on a stiff grid; at SCR&nbsp;5 the converter loses synchronism.</li>
     </ul>
   </section>
-  <figure class="plate">
-    <div class="plate__frame"><img src="../assets/img/citcea-pll.webp" width="1400" height="907" alt="Four plots of the PLL test: phase-jump tracking against the linear design, dq voltages during the jump, wrapped phase lock, and a bandwidth sweep of estimated frequency." loading="lazy" decoding="async"></div>
-    <figcaption><b>Fig. 2</b>PLL verification: the measured phase follows the linear design through a +30° jump (top left); the bandwidth sweep (bottom right) shows the trade-off between lock speed and frequency excursion.</figcaption>
+  <figure class="plate plate--narrow">
+    <div class="plate__frame"><img src="../assets/img/citcea-pll.webp" width="1000" height="1313" alt="Two plots of the PLL test: the measured phase against the linear design through a 30 degree phase jump, and the estimated frequency for PLL bandwidths of 10, 25 and 50 Hz." loading="lazy" decoding="async"></div>
+    <figcaption><b>Fig. 3</b>PLL verification, two of the four panels in my report: the measured phase follows the linear design through a +30° jump (top); the bandwidth sweep (bottom) shows the trade-off between lock speed and frequency excursion.</figcaption>
   </figure>
   <figure class="plate plate--narrow">
-    <div class="plate__frame"><img src="../assets/img/citcea-weakgrid.webp" width="1400" height="1124" alt="Stability map of PLL bandwidth against short-circuit ratio at X/R of 10, with stable cases in green and unstable cases in red." loading="lazy" decoding="async"></div>
-    <figcaption><b>Fig. 3</b>Weak-grid study on the first model at X/R = 10: stable (green) and unstable (red) cases by PLL bandwidth and short-circuit ratio. A faster PLL needs a stronger grid.</figcaption>
+    <div class="plate__frame"><img src="../assets/img/citcea-weakgrid.webp" width="1200" height="945" alt="Stability map of PLL bandwidth against short-circuit ratio at X/R of 10, with stable cases in green and unstable cases in red." loading="lazy" decoding="async"></div>
+    <figcaption><b>Fig. 4</b>Weak-grid study on the first model at X/R = 10: stable (green) and unstable (red) cases by PLL bandwidth and short-circuit ratio, with the per-cell annotations of the original plot left out. A faster PLL needs a stronger grid.</figcaption>
   </figure>
   <section class="block split" aria-labelledby="lessons4-h">
-    <div class="split__head"><h2 class="block__title" id="lessons4-h">What I took from it</h2></div>
+    <div class="split__head"><h2 class="block__title" id="lessons4-h">What I <b>took</b> from it</h2></div>
     <ol class="lessons">
         <li><span><strong>A match is a verification only once every omission is accounted for.</strong> An early DC-link prediction agreed with the model to 0.3&nbsp;V, but only because two errors of opposite sign cancelled.</span></li>
         <li><span><strong>Sampling sets the fine detail.</strong> The one-sample computation delay alone costs 9.5&nbsp;% of a current step and causes the 1.96&nbsp;% coupling between the axes.</span></li>
@@ -100,11 +104,68 @@
     </ol>
   </section>
   <section class="block split" aria-labelledby="s5-h">
-    <div class="split__head"><h2 class="block__title" id="s5-h">Next</h2></div>
+    <div class="split__head"><h2 class="block__title" id="s5-h"><b>Next</b></h2></div>
     <div class="prose">
       <p>Grid-forming control on the two-level converter, evaluated on weak and low-inertia grids, then a modular multilevel converter with an averaged-arm model and the same grid-forming control. Grid-forming control of the MMC is a planned extension, to be completed before the thesis.</p>
     </div>
   </section>
+
+<nav class="sits" aria-labelledby="sits-h">
+  <p class="label sits__head" id="sits-h">Where this sits · <strong>Grid-connected converter control</strong></p>
+<svg class="grid" viewBox="0 0 440 300" role="group" aria-label="Where this project sits in a small grid. The other blocks link to their projects.">
+<path class="wire" d="M45 150H96M150 42v22M150 94v56M250 104v46M122 150v34M300 150v26M300 198v24M390 150v54"/>
+<path class="bus" d="M96 150H428"/>
+<circle class="comp" cx="28" cy="150" r="17"/>
+<path class="glyph" d="M19 150q4.5-8 9 0t9 0"/>
+<text class="lbl" x="28" y="186" text-anchor="middle">Grid</text>
+<path class="comp" d="M282 256v-22l18-12 18 12v22z"/>
+<text class="lbl" x="326" y="250">Load</text>
+<circle class="node" cx="96" cy="150" r="4"/>
+<text class="lbl" x="96" y="138" text-anchor="middle">PCC</text>
+<a href="solar-forecast.html" aria-label="Solar PV: day-ahead solar forecasting project">
+<rect class="hit" x="96" y="8" width="84" height="40"/>
+<rect class="comp" x="128" y="14" width="44" height="28" rx="2"/>
+<path class="glyph" d="M142.7 14v28M157.3 14v28M128 28h44"/>
+<text class="lbl" x="122" y="32" text-anchor="end">PV</text>
+<text class="tip" x="220" y="292" text-anchor="middle">Day-ahead solar forecasting →</text>
+</a>
+<a href="grid-converter.html" aria-label="Grid-connected converter: converter control project" class="is-current" aria-current="page">
+<rect class="hit" x="96" y="58" width="76" height="42"/>
+<rect class="comp" x="134" y="64" width="32" height="30" rx="2"/>
+<path class="glyph" d="M134 94 166 64M138.5 70.5h8M138.5 74.5h8M152 87q2.5-4 5 0t5 0"/>
+<text class="lbl" x="128" y="83" text-anchor="end">VSC</text>
+<text class="tip" x="220" y="292" text-anchor="middle">Grid-connected converter control →</text>
+</a>
+<a href="dfig-supervisory.html" aria-label="Wind turbine: supervisory control project">
+<rect class="hit" x="218" y="2" width="78" height="106"/>
+<path class="comp" d="M248 40h4l2.5 64h-9z"/>
+<g id="rotor"><path class="blade" d="M250 34c-3-9-2.5-19 0-27 2.5 8 3 18 0 27z"/><path class="blade" d="M250 34c-3-9-2.5-19 0-27 2.5 8 3 18 0 27z" transform="rotate(120 250 34)"/><path class="blade" d="M250 34c-3-9-2.5-19 0-27 2.5 8 3 18 0 27z" transform="rotate(240 250 34)"/></g>
+<circle class="comp" cx="250" cy="34" r="3.5"/>
+<text class="lbl" x="262" y="100">Wind</text>
+<text class="tip" x="220" y="292" text-anchor="middle">DFIG wind turbine: supervisory control →</text>
+</a>
+<a href="active-filter-lab.html" aria-label="Active filter: active harmonic filter lab">
+<rect class="hit" x="56" y="176" width="88" height="42"/>
+<rect class="comp" x="106" y="184" width="32" height="26" rx="2"/>
+<path class="glyph" d="M111 197q2.75-6 5.5 0t5.5 0t5.5 0t5.5 0"/>
+<text class="lbl" x="100" y="201" text-anchor="end">Filter</text>
+<text class="tip" x="220" y="292" text-anchor="middle">Active harmonic filter lab →</text>
+</a>
+<a href="pid-design-tool.html" aria-label="Power supply with PFC: digital PID design tool">
+<rect class="hit" x="276" y="170" width="76" height="34"/>
+<rect class="comp" x="282" y="176" width="36" height="22" rx="2"/>
+<text class="lbl in-box" x="300" y="191" text-anchor="middle">PFC</text>
+<text class="tip" x="220" y="292" text-anchor="middle">Digital PID design tool for PFC →</text>
+</a>
+<a href="ev-mpc.html" aria-label="Electric vehicle: MPC speed controller project">
+<rect class="hit" x="358" y="196" width="66" height="54"/>
+<path class="comp" d="M368 220v-7l7-9h28l7 9h2v7z"/>
+<circle class="comp" cx="378" cy="220" r="4"/><circle class="comp" cx="402" cy="220" r="4"/>
+<text class="lbl" x="390" y="242" text-anchor="middle">EV · MPC</text>
+<text class="tip" x="220" y="292" text-anchor="middle">EV powertrain: MPC speed controller →</text>
+</a>
+</svg>
+</nav>
 
   <nav class="pager" aria-label="More projects">
     <a class="pager__prev" href="pid-design-tool.html"><span class="label">← Previous</span><span class="pager__title">Digital PID design tool</span></a>
@@ -118,7 +179,9 @@
     <div>
       <h2>Contact</h2>
       <ul class="contact-list">
+        <li><a href="https://www.linkedin.com/in/caleb-kyei">LinkedIn</a></li>
         <li><a href="https://github.com/CalebKyei">GitHub</a></li>
+        <li><a href="../assets/caleb-kyei-cv.pdf" type="application/pdf">CV (PDF)</a></li>
       </ul>
     </div>
     <div><h2>Based in</h2><ul><li>Barcelona</li></ul></div>
@@ -126,6 +189,7 @@
   </div>
   <div class="wrap site-footer__bar">
     <span>© 2026 Caleb Kyei</span>
+    <span class="wiring"><span class="visually-hidden">Site colours, the IEC 60445 conductor code: </span><i class="w1" aria-hidden="true"></i>L1 <i class="w2" aria-hidden="true"></i>L2 <i class="w3" aria-hidden="true"></i>L3 <i class="wn" aria-hidden="true"></i>N</span>
     <a href="../privacy.html">Privacy policy</a>
   </div>
 </footer>
