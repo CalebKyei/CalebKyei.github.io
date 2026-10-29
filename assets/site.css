@@ -1,13 +1,13 @@
 /* Caleb Kyei: site styles. Self-hosted Fraunces and Recursive Mono (OFL, see fonts/OFL.txt); no third-party requests. */
 
 /* Fraunces, subset to Latin: weight 400-600, optical size 9-144 (set automatically by font size), SOFT 50,
-   WONK off. Headings and body text. Fraunces has no Greek, so "Source Serif Greek" carries the three Greek letters
+   WONK off. Headings and body text. Fraunces has no Greek or arrows, so "Source Serif Greek" carries the three Greek letters and ← →
    the pages use (Omega, tau, phi) from Source Serif 4, scaled to Fraunces' x-height; the browser fetches it only
    on a page that shows one of them. Recursive Mono, subset to Latin: weight 300-700, linear. Labels, numbers
    and readouts. */
 @font-face { font-family: "Fraunces"; src: url("fonts/fraunces.woff2") format("woff2"); font-weight: 400 600; font-style: normal; font-display: swap; }
 @font-face { font-family: "Recursive Mono"; src: url("fonts/recursive-mono.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: swap; }
-@font-face { font-family: "Source Serif Greek"; src: url("fonts/source-serif-greek.woff2") format("woff2"); font-weight: 400 600; font-style: normal; font-display: swap; unicode-range: U+03A9, U+03C4, U+03C6; size-adjust: 103%; }
+@font-face { font-family: "Source Serif Greek"; src: url("fonts/source-serif-greek.woff2") format("woff2"); font-weight: 400 600; font-style: normal; font-display: swap; unicode-range: U+03A9, U+03C4, U+03C6, U+2190, U+2192; size-adjust: 103%; }
 
 :root {
   /* Palette A, light: neutral white and cool grey, charcoal ink. The colours are the IEC 60445 conductor
