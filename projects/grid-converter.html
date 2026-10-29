@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>Grid-connected converter control · Caleb Kyei</title>
+<meta name="description" content="Caleb Kyei: a two-level grid-following converter built and verified block by block, the first stage towards grid-forming control and an MMC.">
+<meta name="author" content="Caleb Kyei">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3f2ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0b0d" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://calebkyei.github.io/projects/grid-converter.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/plex-sans-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/site.css">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Caleb Kyei">
+<meta property="og:title" content="Grid-connected converter control · Caleb Kyei">
+<meta property="og:description" content="Caleb Kyei: a two-level grid-following converter built and verified block by block, the first stage towards grid-forming control and an MMC.">
+<meta property="og:url" content="https://calebkyei.github.io/projects/grid-converter.html">
+<meta property="og:image" content="https://calebkyei.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="wordmark" href="../">Caleb Kyei</a>
+    <nav aria-label="Site">
+      <ul>
+        <li><a href="../#work" aria-current="true">Work</a></li>
+        <li><a href="../#experience">Experience</a></li>
+        <li><a href="../#education">Education</a></li>
+        <li><a href="../#skills">Skills</a></li>
+        <li><a href="../#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <p class="crumb"><a href="../#work">← Selected work</a></p>
+  <header class="project-head">
+    <p class="eyebrow">CITCEA-UPC · Barcelona</p>
+    <h1 class="project-title">Grid-connected converter control</h1>
+    <div class="project-intro">
+      <p class="lede">I am building a grid-connected voltage-source converter in MATLAB/Simulink one stage at a time: a two-level converter with grid-following control first, then grid-forming control, and later a modular multilevel converter (MMC). Most results are checked against a prediction computed without the model.</p>
+      <dl class="facts">
+        <div><dt>Status</dt><dd>In progress: the grid-following stage is built and verified</dd></div>
+        <div><dt>Type</dt><dd>Individual project, since Sep 2026</dd></div>
+        <div><dt>Converter</dt><dd>Two-level VSC: 400&nbsp;V, 10&nbsp;kVA, 800&nbsp;V DC</dd></div>
+        <div><dt>Control</dt><dd>SRF-PLL, IMC current loop (τ = 1&nbsp;ms), DC-link energy loop, Q–V droop</dd></div>
+        <div><dt>Tools</dt><dd>MATLAB/Simulink, Simscape Specialized Power Systems</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <dl class="numbers" aria-label="Key numbers">
+    <div><dt>The 25&nbsp;Hz SRF-PLL follows its linear design through a 30° phase jump to within this share of the step</dt><dd>0.74&nbsp;%</dd></div>
+    <div><dt>Settling time of the IMC current loop, which matches its exact sampled-data prediction to 3&nbsp;×&nbsp;10<sup>−9</sup>&nbsp;A</dt><dd>3.4&nbsp;ms</dd></div>
+    <div><dt>Weakest grid (X/R = 10) at which the first model stayed synchronised with the 25&nbsp;Hz PLL, in the tested cases; not a rated-power result</dt><dd>SCR&nbsp;1.3</dd></div>
+    <div><dt>DC-link voltage held by the DC chopper during balanced sags at rated power</dt><dd>865&nbsp;V</dd></div>
+  </dl>
+
+  <figure class="plate">
+    <div class="plate__frame"><img src="../assets/img/citcea-system.webp" width="1400" height="853" alt="Block diagram of the stage-1 model: constant-power source and DC link, averaged two-level converter, filter and grid, with SRF-PLL, DC-link energy control, modulator and IMC current controller." loading="lazy" decoding="async"></div>
+    <figcaption><b>Fig. 1</b>Control structure of the stage-1 model: the DC link and its energy loop, the averaged two-level converter, filter and grid, the SRF-PLL, and the IMC current controller with decoupling and anti-windup.</figcaption>
+  </figure>
+  <section class="block split" aria-labelledby="results1-h">
+    <div class="split__head"><h2 class="block__title" id="results1-h">Results</h2></div>
+    <ul class="results">
+        <li><strong>Inner control.</strong> The 25&nbsp;Hz SRF-PLL follows its linear design through a 30° phase jump to 0.74&nbsp;% of the step. The IMC current loop matches the exact sampled-data prediction to 3&nbsp;×&nbsp;10<sup>−9</sup>&nbsp;A and settles in 3.4&nbsp;ms; the full model reproduces it to 0.5&nbsp;%.</li>
+        <li><strong>Weak grid.</strong> With the 25&nbsp;Hz PLL, the first model (ideal DC source, SPWM) stayed synchronised under a rated d-axis current reference down to SCR&nbsp;1.3 (X/R = 10), in the tested cases; a faster PLL needs a stronger grid. Its exported power falls with the PCC voltage, so this is not a rated-power result.</li>
+        <li><strong>DC link.</strong> An energy loop with source-power feed-forward, and a current limit applied as a power, holds the DC voltage with the DC and AC sides coupled both ways. The rated step peaks within 1&nbsp;V of the linear loop.</li>
+        <li><strong>AC voltage.</strong> A filtered Q–V droop, stable down to SCR&nbsp;1.3 at reduced power and well inside a 1&nbsp;s response target.</li>
+        <li><strong>Grid conditions.</strong> In balanced sags a DC chopper holds the link at 865&nbsp;V at rated power. A deep-fault profile is ridden through on a stiff grid; at SCR&nbsp;5 the converter loses synchronism.</li>
+    </ul>
+  </section>
+  <figure class="plate">
+    <div class="plate__frame"><img src="../assets/img/citcea-pll.webp" width="1400" height="907" alt="Four plots of the PLL test: phase-jump tracking against the linear design, dq voltages during the jump, wrapped phase lock, and a bandwidth sweep of estimated frequency." loading="lazy" decoding="async"></div>
+    <figcaption><b>Fig. 2</b>PLL verification: the measured phase follows the linear design through a +30° jump (top left); the bandwidth sweep (bottom right) shows the trade-off between lock speed and frequency excursion.</figcaption>
+  </figure>
+  <figure class="plate plate--narrow">
+    <div class="plate__frame"><img src="../assets/img/citcea-weakgrid.webp" width="1400" height="1124" alt="Stability map of PLL bandwidth against short-circuit ratio at X/R of 10, with stable cases in green and unstable cases in red." loading="lazy" decoding="async"></div>
+    <figcaption><b>Fig. 3</b>Weak-grid study on the first model at X/R = 10: stable (green) and unstable (red) cases by PLL bandwidth and short-circuit ratio. A faster PLL needs a stronger grid.</figcaption>
+  </figure>
+  <section class="block split" aria-labelledby="lessons4-h">
+    <div class="split__head"><h2 class="block__title" id="lessons4-h">What I took from it</h2></div>
+    <ol class="lessons">
+        <li><span><strong>A match is a verification only once every omission is accounted for.</strong> An early DC-link prediction agreed with the model to 0.3&nbsp;V, but only because two errors of opposite sign cancelled.</span></li>
+        <li><span><strong>Sampling sets the fine detail.</strong> The one-sample computation delay alone costs 9.5&nbsp;% of a current step and causes the 1.96&nbsp;% coupling between the axes.</span></li>
+        <li><span><strong>On a weak grid the converter measures itself.</strong> The PLL follows a PCC voltage that its own current moves, so the PLL and the droop both need slower dynamics as the grid weakens.</span></li>
+        <li><span><strong>Some failures are not tuning problems.</strong> In the deep fault at SCR&nbsp;5 this grid-following baseline loses synchronism. Whether grid-forming control does better under the same plant, energy and current limits is what the next stage tests.</span></li>
+    </ol>
+  </section>
+  <section class="block split" aria-labelledby="s5-h">
+    <div class="split__head"><h2 class="block__title" id="s5-h">Next</h2></div>
+    <div class="prose">
+      <p>Grid-forming control on the two-level converter, evaluated on weak and low-inertia grids, then a modular multilevel converter with an averaged-arm model and the same grid-forming control. Grid-forming control of the MMC is a planned extension, to be completed before the thesis.</p>
+    </div>
+  </section>
+
+  <nav class="pager" aria-label="More projects">
+    <a class="pager__prev" href="pid-design-tool.html"><span class="label">← Previous</span><span class="pager__title">Digital PID design tool</span></a>
+    <a class="pager__next" href="ev-mpc.html"><span class="label">Next →</span><span class="pager__title">EV powertrain: MPC speed controller</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__cols">
+    <div><p class="footer-name">Caleb Kyei</p><p class="label">Control and power electronics engineer</p></div>
+    <div>
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li><a href="https://github.com/CalebKyei">GitHub</a></li>
+      </ul>
+    </div>
+    <div><h2>Based in</h2><ul><li>Barcelona</li></ul></div>
+    <div><h2>Availability</h2><ul><li>Master's thesis, 1 Feb – 31 Jul 2027</li></ul></div>
+  </div>
+  <div class="wrap site-footer__bar">
+    <span>© 2026 Caleb Kyei</span>
+    <a href="../privacy.html">Privacy policy</a>
+  </div>
+</footer>
+</body>
+</html>

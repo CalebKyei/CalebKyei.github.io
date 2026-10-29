@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>2 MW DFIG wind turbine: supervisory control · Caleb Kyei</title>
+<meta name="description" content="Caleb Kyei: the supervisory state machine of a group model of a 2 MW DFIG wind turbine: idle, MPPT, pitch-limited rated power and storm cut-out.">
+<meta name="author" content="Caleb Kyei">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3f2ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0b0d" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://calebkyei.github.io/projects/dfig-supervisory.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/plex-sans-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/site.css">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Caleb Kyei">
+<meta property="og:title" content="2 MW DFIG wind turbine: supervisory control · Caleb Kyei">
+<meta property="og:description" content="Caleb Kyei: the supervisory state machine of a group model of a 2 MW DFIG wind turbine: idle, MPPT, pitch-limited rated power and storm cut-out.">
+<meta property="og:url" content="https://calebkyei.github.io/projects/dfig-supervisory.html">
+<meta property="og:image" content="https://calebkyei.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="wordmark" href="../">Caleb Kyei</a>
+    <nav aria-label="Site">
+      <ul>
+        <li><a href="../#work" aria-current="true">Work</a></li>
+        <li><a href="../#experience">Experience</a></li>
+        <li><a href="../#education">Education</a></li>
+        <li><a href="../#skills">Skills</a></li>
+        <li><a href="../#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <p class="crumb"><a href="../#work">← Selected work</a></p>
+  <header class="project-head">
+    <p class="eyebrow">École Centrale de Nantes · group project</p>
+    <h1 class="project-title">2&nbsp;MW DFIG wind turbine: supervisory control</h1>
+    <div class="project-intro">
+      <p class="lede">In a group project modelling a grid-connected, back-to-back DFIG wind energy conversion system, I designed the supervisory controller: a finite state machine that decides when the turbine idles, tracks maximum power, limits power with the pitch, or shuts down in a storm.</p>
+      <dl class="facts">
+        <div><dt>Role</dt><dd>Group project of five; my part was the supervisory controller</dd></div>
+        <div><dt>Turbine</dt><dd>2&nbsp;MW DFIG, rated generator speed 1800&nbsp;rpm</dd></div>
+        <div><dt>Regions</dt><dd>Idle, soft start, MPPT, power limiting, safety cut-out</dd></div>
+        <div><dt>Control laws</dt><dd>MPPT torque T = K<sub>opt</sub>·Ω², pitch PI with clamping anti-windup, start-up pitch schedule</dd></div>
+        <div><dt>When</dt><dd>Dec 2025</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <dl class="numbers" aria-label="Key numbers">
+    <div><dt>Rated generator speed: the transition from MPPT to rated power</dt><dd>1800&nbsp;rpm</dd></div>
+    <div><dt>Return threshold to MPPT, 0.88 × rated: the hysteresis that stops chattering</dt><dd>1584&nbsp;rpm</dd></div>
+    <div><dt>Cut-out wind speed; restart only below 19&nbsp;m/s and once the rotor has slowed</dt><dd>25&nbsp;m/s</dd></div>
+    <div><dt>Rated power held by the pitch controller above rated wind</dt><dd>2&nbsp;MW</dd></div>
+  </dl>
+
+  <figure class="plate plate--narrow">
+    <div class="plate__frame"><img src="../assets/img/dfig-fsm.webp" width="1050" height="889" alt="Flowchart of the supervisory state machine with idle, MPPT, pitch and cut-out modes and the conditions that move between them." loading="lazy" decoding="async"></div>
+    <figcaption><b>Fig. 1</b>The supervisory state machine: the transitions out of each mode, and which modes enable the pitch controller.</figcaption>
+  </figure>
+  <section class="block split" aria-labelledby="results1-h">
+    <div class="split__head"><h2 class="block__title" id="results1-h">Results</h2></div>
+    <ul class="results">
+        <li><strong>MPPT.</strong> After the soft start, the generator torque follows the optimal K<sub>opt</sub>Ω² curve.</li>
+        <li><strong>Rated power.</strong> Above rated wind the pitch controller holds the generator at 1800&nbsp;rpm and the power at 2&nbsp;MW.</li>
+        <li><strong>Cut-out and restart.</strong> When the wind drops back below 25&nbsp;m/s the turbine does not restart at once: it waits until the wind is below 19&nbsp;m/s and the rotor has slowed to a safe speed.</li>
+        <li><strong>Hand-off.</strong> A 0.965 derating on K<sub>opt</sub> made the turbine reliably reach rated speed for the hand-over to the pitch controller.</li>
+    </ul>
+  </section>
+  <figure class="plate plate--narrow">
+    <div class="plate__frame"><img src="../assets/img/dfig-envelope.webp" width="1100" height="1103" alt="Three plots over 100 seconds: wind speed rising past the cut-out line and falling below the restart line, generator speed, and the supervisory state." loading="lazy" decoding="async"></div>
+    <figcaption><b>Fig. 2</b>Full-envelope test: the wind rises past the 25&nbsp;m/s cut-out and falls back (top), with the generator speed (middle) and the active state (bottom). The turbine stays in cut-out until the wind is below 19&nbsp;m/s and the rotor has slowed.</figcaption>
+  </figure>
+  <figure class="plate plate--narrow">
+    <div class="plate__frame"><img src="../assets/img/dfig-pitch.webp" width="1351" height="1234" alt="Four plots over 40 seconds: wind ramping from 10 to 15 metres per second, generator speed and power, pitch angle, and controller state switching from MPPT to pitch." loading="lazy" decoding="async"></div>
+    <figcaption><b>Fig. 3</b>Rated-power regulation: as the wind ramps from 10 to 15&nbsp;m/s the controller switches from MPPT to pitch at rated speed, holding the generator at 1800&nbsp;rpm and the power at 2&nbsp;MW (generator sign convention).</figcaption>
+  </figure>
+  <section class="block split" aria-labelledby="lessons4-h">
+    <div class="split__head"><h2 class="block__title" id="lessons4-h">What I took from it</h2></div>
+    <ol class="lessons">
+        <li><span><strong>Hysteresis prevents chattering.</strong> Entering rated power at 1800&nbsp;rpm but returning to MPPT only below 1584&nbsp;rpm keeps turbulence from flipping the state back and forth.</span></li>
+        <li><span><strong>A clean hand-off needs a margin.</strong> In theory K<sub>opt</sub> meets the rated point exactly; in practice a small derating was needed so the turbine reached rated speed despite model uncertainty.</span></li>
+        <li><span><strong>Parts that work alone may not work together.</strong> Each component was verified on its own, but the integrated model did not behave as expected, and with everything coupled the source was hard to find.</span></li>
+    </ol>
+  </section>
+  <section class="block split" aria-label="Scope">
+    <div class="split__head"><h2 class="block__title">Scope</h2></div>
+    <p class="note">Group project. The supervisory controller was verified on the model without the grid-side converter; the group's fully integrated model did not perform as expected, although each component worked on its own.</p>
+  </section>
+
+  <nav class="pager" aria-label="More projects">
+    <a class="pager__prev" href="solar-forecast.html"><span class="label">← Previous</span><span class="pager__title">Day-ahead solar forecasting</span></a>
+    <a class="pager__next" href="pid-design-tool.html"><span class="label">Next →</span><span class="pager__title">Digital PID design tool</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__cols">
+    <div><p class="footer-name">Caleb Kyei</p><p class="label">Control and power electronics engineer</p></div>
+    <div>
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li><a href="https://github.com/CalebKyei">GitHub</a></li>
+      </ul>
+    </div>
+    <div><h2>Based in</h2><ul><li>Barcelona</li></ul></div>
+    <div><h2>Availability</h2><ul><li>Master's thesis, 1 Feb – 31 Jul 2027</li></ul></div>
+  </div>
+  <div class="wrap site-footer__bar">
+    <span>© 2026 Caleb Kyei</span>
+    <a href="../privacy.html">Privacy policy</a>
+  </div>
+</footer>
+</body>
+</html>

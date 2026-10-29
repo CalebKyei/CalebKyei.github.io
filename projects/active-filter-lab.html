@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<title>Active harmonic filter on a 400 V test bench · Caleb Kyei</title>
+<meta name="description" content="Caleb Kyei: a team lab with a commercial shunt active filter in front of a rectifier drive on a 400 V bench, and his analysis of the 20 A operating point against the baseline.">
+<meta name="author" content="Caleb Kyei">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f3f2ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0b0d" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://calebkyei.github.io/projects/active-filter-lab.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/plex-sans-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/site.css">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Caleb Kyei">
+<meta property="og:title" content="Active harmonic filter on a 400 V test bench · Caleb Kyei">
+<meta property="og:description" content="Caleb Kyei: a team lab with a commercial shunt active filter in front of a rectifier drive on a 400 V bench, and his analysis of the 20 A operating point against the baseline.">
+<meta property="og:url" content="https://calebkyei.github.io/projects/active-filter-lab.html">
+<meta property="og:image" content="https://calebkyei.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="wordmark" href="../">Caleb Kyei</a>
+    <nav aria-label="Site">
+      <ul>
+        <li><a href="../#work" aria-current="true">Work</a></li>
+        <li><a href="../#experience">Experience</a></li>
+        <li><a href="../#education">Education</a></li>
+        <li><a href="../#skills">Skills</a></li>
+        <li><a href="../#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <p class="crumb"><a href="../#work">← Selected work</a></p>
+  <header class="project-head">
+    <p class="eyebrow">HTW Berlin · team lab</p>
+    <h1 class="project-title">Active harmonic filter on a 400&nbsp;V test bench</h1>
+    <div class="project-intro">
+      <p class="lede">In a Smart Grids lab, six of us operated a commercial shunt active filter in front of a six-pulse rectifier drive on a 400&nbsp;V, 50&nbsp;Hz test bench, and measured what it did to the current drawn from the grid. My part of the report was the analysis of the 20&nbsp;A operating point against the uncompensated baseline.</p>
+      <dl class="facts">
+        <div><dt>Role</dt><dd>Team lab of six; my part was the analysis of the 20&nbsp;A operating point</dd></div>
+        <div><dt>Bench</dt><dd>400&nbsp;V, 50&nbsp;Hz mains; B6C rectifier feeding a DC motor coupled to an induction machine; the filter in parallel at the point of common coupling</dd></div>
+        <div><dt>Filter</dt><dd>GRIDCON ACF, commercial equipment: operated and measured, not designed by us</dd></div>
+        <div><dt>Operating point</dt><dd>I<sub>DC</sub> = 20&nbsp;A, n = 400&nbsp;min<sup>−1</sup></dd></div>
+        <div><dt>When</dt><dd>2026</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <p class="label numbers-label" id="numbers-label">Team measurements at the 20&nbsp;A operating point</p>
+  <dl class="numbers numbers--labelled" aria-labelledby="numbers-label">
+    <div><dt>Grid current with reactive-power compensation on, about 75&nbsp;% lower, while the load current was essentially unchanged (17.6&nbsp;A, then 17.8&nbsp;A)</dt><dd>16.9&nbsp;→ 4.3&nbsp;A</dd></div>
+    <div><dt>Reactive power drawn from the grid</dt><dd>11.0&nbsp;kvar&nbsp;→ 852&nbsp;var</dd></div>
+    <div><dt>Displacement factor cos&nbsp;φ at the grid connection</dt><dd>0.24&nbsp;→ 0.95</dd></div>
+    <div><dt>Grid-side harmonic current (THD<sub>i</sub>) when the dedicated harmonic loop was added on top</dt><dd>1.9&nbsp;→ 1.7&nbsp;A</dd></div>
+  </dl>
+
+  <figure class="plate plate--pair">
+    <div class="plate__pair">
+      <div class="plate__cell"><div class="plate__frame"><img src="../assets/img/active-filter-off.webp" width="1160" height="512" alt="Touchpanel readout with the filter idle: grid current 16.9 A, grid reactive power 11.0 kvar, load current 17.6 A, filter current 3.5 A at 0 % utilisation." loading="lazy" decoding="async"></div><p class="plate__tag">(a) Filter idle</p></div>
+      <div class="plate__cell"><div class="plate__frame"><img src="../assets/img/active-filter-on.webp" width="1055" height="440" alt="Touchpanel readout with reactive-power compensation on: grid current 4.3 A, grid reactive power 852.1 var, load current 17.8 A, filter current 16.6 A at 27.6 % utilisation." loading="lazy" decoding="async"></div><p class="plate__tag">(b) Reactive-power compensation on</p></div>
+    </div>
+    <figcaption><b>Fig. 1</b>Team bench photos of the filter's touchpanel at the 20&nbsp;A operating point, cropped to the readings. With the filter idle the grid supplies the load directly; with reactive-power compensation on, the filter carries 16.6&nbsp;A of the 17.8&nbsp;A load current and the grid current falls to 4.3&nbsp;A.</figcaption>
+  </figure>
+  <section class="block split" aria-labelledby="results1-h">
+    <div class="split__head"><h2 class="block__title" id="results1-h">My analysis</h2></div>
+    <ul class="results">
+        <li><strong>Baseline.</strong> With the filter idle the grid carried the load's full reactive power, 11.0&nbsp;kvar against 2.74&nbsp;kW of active power, so the displacement factor at the grid connection was only about 0.24: a strongly inductive load.</li>
+        <li><strong>A balance as a check.</strong> With reactive-power compensation on, the busbar balance Q<sub>1</sub> ≈ Q<sub>2</sub> + Q<sub>3</sub> = 11.0 − 10.2 = 0.8&nbsp;kvar matched the measured 852&nbsp;var within measurement tolerance.</li>
+        <li><strong>Why the grid current fell.</strong> The reactive component, previously the dominant part of the grid current, was now supplied locally by the filter instead of being drawn from the mains: the grid current fell by about 75&nbsp;% and cos&nbsp;φ rose to about 0.95.</li>
+        <li><strong>Harmonics as a by-product.</strong> The grid-side harmonic current fell from 5.4&nbsp;A to 1.9&nbsp;A before the harmonic loop was switched on, because the filter was now carrying most of the load current, and with it most of the load's harmonic content.</li>
+        <li><strong>Not independent, not additive.</strong> Adding the dedicated harmonic loop trimmed the grid-side harmonic current only from 1.9&nbsp;A to 1.7&nbsp;A, about 10&nbsp;%, with Q, P and I<sub>rms</sub> essentially unchanged. At this operating point the disturbance was dominated by reactive power rather than by harmonics, and the two compensation mechanisms interact rather than add.</li>
+    </ul>
+  </section>
+  <section class="block split" aria-labelledby="lessons2-h">
+    <div class="split__head"><h2 class="block__title" id="lessons2-h">What I took from it</h2></div>
+    <ol class="lessons">
+        <li><span><strong>Find what dominates before choosing the fix.</strong> The load's disturbance was mostly reactive power, so the reactive-power loop alone recovered most of the improvement.</span></li>
+        <li><span><strong>The loop that fixed the problem was not the one built for it.</strong> The harmonic loop added about 10&nbsp;%; the reactive-power loop had already moved most of the harmonic current off the grid.</span></li>
+        <li><span><strong>Close the balance.</strong> Checking that the three measured reactive powers add up tests both the readings and the explanation.</span></li>
+    </ol>
+  </section>
+  <section class="block split" aria-label="Scope">
+    <div class="split__head"><h2 class="block__title">Scope</h2></div>
+    <p class="note">Team lab of six: the measurements and photos are the team's, shown with its consent. The filter is commercial equipment that we operated and measured; we did not design or build it. The analysis above is my chapter of the team's report.</p>
+  </section>
+
+  <nav class="pager" aria-label="More projects">
+    <a class="pager__prev" href="ev-mpc.html"><span class="label">← Previous</span><span class="pager__title">EV powertrain: MPC speed controller</span></a>
+    <a class="pager__next" href="solar-forecast.html"><span class="label">Next →</span><span class="pager__title">Day-ahead solar forecasting</span></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__cols">
+    <div><p class="footer-name">Caleb Kyei</p><p class="label">Control and power electronics engineer</p></div>
+    <div>
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li><a href="https://github.com/CalebKyei">GitHub</a></li>
+      </ul>
+    </div>
+    <div><h2>Based in</h2><ul><li>Barcelona</li></ul></div>
+    <div><h2>Availability</h2><ul><li>Master's thesis, 1 Feb – 31 Jul 2027</li></ul></div>
+  </div>
+  <div class="wrap site-footer__bar">
+    <span>© 2026 Caleb Kyei</span>
+    <a href="../privacy.html">Privacy policy</a>
+  </div>
+</footer>
+</body>
+</html>

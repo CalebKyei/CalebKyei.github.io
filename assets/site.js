@@ -1,5 +1,6 @@
-// Lists public, non-fork GitHub repositories live from the GitHub API (60 requests/hour per
-// visitor, no token). The section stays hidden when there is nothing to show or the API fails.
+// Home page only: the footer year, and a live list of public, non-fork GitHub repositories
+// (GitHub API, 60 requests/hour per visitor, no token). The list stays hidden when there is
+// nothing to show or the API fails.
 (() => {
   'use strict';
   const year = document.getElementById('year');

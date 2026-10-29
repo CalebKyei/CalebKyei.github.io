@@ -92,9 +92,10 @@
   function readColors() {
     const cs = getComputedStyle(document.documentElement);
     const get = (name) => cs.getPropertyValue(name).trim();
+    // The screen is dark in both themes, so the trace glow is always on.
     return {
-      screen: get('--screen'), grid: get('--grid'), major: get('--grid-major'), muted: get('--muted'),
-      ch1: get('--ch1'), ch2: get('--ch2'), ch3: get('--ch3'), ink: get('--ink'), glow: darkScheme.matches,
+      screen: get('--scope-screen'), grid: get('--scope-grid'), major: get('--scope-major'),
+      muted: get('--scope-muted'), ch1: get('--ch1'), ch2: get('--ch2'), ch3: get('--ch3'), glow: true,
     };
   }
 
@@ -106,7 +107,7 @@
     H = Math.round(rect.height);
     for (const c of [canvas, layer]) { c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); }
     shown = W < 460 ? N : len;                         // one period on narrow screens, two otherwise
-    const left = 30, right = 10, top = 10, bottom = 10;
+    const left = 30, right = 12, top = 34, bottom = 12; // top leaves room for the legend
     const pw = W - left - right, ph = H - top - bottom;
     const band = ph / 3;
     geo = {
